@@ -11,6 +11,7 @@ import AuthenticationPage from "./pages/AuthenticationPage";
 import PrivatePage from "./pages/PrivatePage";
 import { login } from "./store/slices/authentication-slice";
 import { useDispatch } from "react-redux";
+import RoutePaths from "./constants/route-paths";
 
 function App() {
 	const dispatch = useDispatch();
@@ -23,19 +24,23 @@ function App() {
 	}, []);
 
 	return (
-		<div>
-			<Routes>
-				<Route path="/" element={<TasksPage />} />
-				<Route path="/test" element={<Test />} />
-				<Route path="/login" element={<LoginPage />} />
-				<Route path="/signup" element={<SignUpPage />} />
-				<Route path="/forgot-password" element={<ForgotPasswordPage />} />
-				<Route path="/change-password" element={<ChangePasswordPage />} />
-				<Route path="/workspace" element={<WorkspacePage />} />
-				<Route path="/auth" element={<AuthenticationPage />} />
-				<Route path="/private" element={<PrivatePage />} />
-			</Routes>
-		</div>
+		<Routes>
+			<Route path={RoutePaths.ROOT} element={<TasksPage />} />
+			<Route path={RoutePaths.TEST} element={<Test />} />
+			<Route path={RoutePaths.LOGIN} element={<LoginPage />} />
+			<Route path={RoutePaths.SIGNUP} element={<SignUpPage />} />
+			<Route
+				path={RoutePaths.FORGOT_PASSWORD}
+				element={<ForgotPasswordPage />}
+			/>
+			<Route
+				path={RoutePaths.CHANGE_PASSWORD}
+				element={<ChangePasswordPage />}
+			/>
+			<Route path={RoutePaths.WORKSPACE} element={<WorkspacePage />} />
+			<Route path={RoutePaths.AUTH} element={<AuthenticationPage />} />
+			<Route path={RoutePaths.PRIVATE} element={<PrivatePage />} />
+		</Routes>
 	);
 }
 
