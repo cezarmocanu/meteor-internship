@@ -24,23 +24,25 @@ function App() {
 	}, []);
 
 	return (
-		<Routes>
-			<Route path={RoutePaths.ROOT} element={<TasksPage />} />
-			<Route path={RoutePaths.TEST} element={<Test />} />
-			<Route path={RoutePaths.LOGIN} element={<LoginPage />} />
-			<Route path={RoutePaths.SIGNUP} element={<SignUpPage />} />
-			<Route
-				path={RoutePaths.FORGOT_PASSWORD}
-				element={<ForgotPasswordPage />}
-			/>
-			<Route
-				path={RoutePaths.CHANGE_PASSWORD}
-				element={<ChangePasswordPage />}
-			/>
-			<Route path={RoutePaths.WORKSPACE} element={<WorkspacePage />} />
-			<Route path={RoutePaths.AUTH} element={<AuthenticationPage />} />
-			<Route path={RoutePaths.PRIVATE} element={<PrivatePage />} />
-		</Routes>
+		<BrowserRouter>
+			<Routes>
+				<Route path={RoutePaths.ROOT} element={<TasksPage />} />
+				<Route path={RoutePaths.TEST} element={<Test />} />
+				<Route path={RoutePaths.LOGIN} element={<LoginPage />} />
+				<Route path={RoutePaths.SIGNUP} element={<SignUpPage />} />
+				<Route
+					path={RoutePaths.FORGOT_PASSWORD}
+					element={<ForgotPasswordPage />}
+				/>
+				<Route
+					path={RoutePaths.CHANGE_PASSWORD}
+					element={<ChangePasswordPage />}
+				/>
+				<Route path={RoutePaths.WORKSPACE} element={<WorkspacePage />} />
+				<Route path={RoutePaths.AUTH} element={<AuthenticationPage />} />
+				<Route path={RoutePaths.PRIVATE} element={<PrivatePage />} />
+			</Routes>
+		</BrowserRouter>
 	);
 }
 
