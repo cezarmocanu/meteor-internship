@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Test from "./pages/TestPage";
 import TasksPage from "./pages/TasksPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -24,25 +24,27 @@ function App() {
 	}, []);
 
 	return (
-		<BrowserRouter>
-			<Routes>
-				<Route path={RoutePaths.ROOT} element={<TasksPage />} />
-				<Route path={RoutePaths.TEST} element={<Test />} />
-				<Route path={RoutePaths.LOGIN} element={<LoginPage />} />
-				<Route path={RoutePaths.SIGNUP} element={<SignUpPage />} />
-				<Route
-					path={RoutePaths.FORGOT_PASSWORD}
-					element={<ForgotPasswordPage />}
-				/>
-				<Route
-					path={RoutePaths.CHANGE_PASSWORD}
-					element={<ChangePasswordPage />}
-				/>
-				<Route path={RoutePaths.WORKSPACE} element={<WorkspacePage />} />
-				<Route path={RoutePaths.AUTH} element={<AuthenticationPage />} />
-				<Route path={RoutePaths.PRIVATE} element={<PrivatePage />} />
-			</Routes>
-		</BrowserRouter>
+		<>
+			<BrowserRouter>
+				<Routes>
+					<Route path={RoutePaths.ROOT} element={<TasksPage />} />
+					<Route path={RoutePaths.TEST} element={<Test />} />
+					<Route path={RoutePaths.LOGIN} element={<LoginPage />} />
+					<Route path={RoutePaths.SIGNUP} element={<SignUpPage />} />
+					<Route
+						path={RoutePaths.FORGOT_PASSWORD}
+						element={<ForgotPasswordPage />}
+					/>
+					<Route
+						path={RoutePaths.CHANGE_PASSWORD}
+						element={<ChangePasswordPage />}
+					/>
+					<Route path={RoutePaths.WORKSPACE} element={<WorkspacePage />} />
+					<Route path={RoutePaths.AUTH} element={<AuthenticationPage />} />
+					<Route path={RoutePaths.PRIVATE} element={<PrivatePage />} />
+				</Routes>
+			</BrowserRouter>
+		</>
 	);
 }
 
