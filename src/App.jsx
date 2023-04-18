@@ -10,11 +10,17 @@ import WorkspacePage from "./pages/WorkspacePage";
 import AuthenticationPage from "./pages/AuthenticationPage";
 import PrivatePage from "./pages/PrivatePage";
 import { login } from "./store/slices/authentication-slice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { selectModal, closeModal } from "./store/slices/modal-slice";
 import RoutePaths from "./constants/route-paths";
+import { Dialog } from "@mui/material";
+import ModalTypes from "./constants/modal-types";
+import TestContent1 from "./components/modal-content/TestContent1";
+import TestContent2 from "./components/modal-content/TestContent2";
 
 function App() {
 	const dispatch = useDispatch();
+	const modalState = useSelector(selectModal);
 
 	useEffect(() => {
 		const token = localStorage.getItem("token");
@@ -44,6 +50,11 @@ function App() {
 					<Route path={RoutePaths.PRIVATE} element={<PrivatePage />} />
 				</Routes>
 			</BrowserRouter>
+
+			<Dialog open={modalState ?? false} onClose={() => dispatch(closeModal())}>
+				{modalState === ModalTypes.TEST && <TestContent1 />}
+				{modalState === ModalTypes.TEST2 && <TestContent2 />}
+			</Dialog>
 		</>
 	);
 }
