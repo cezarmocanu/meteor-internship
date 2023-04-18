@@ -13,7 +13,6 @@ import {
 	CardHeader,
 	Avatar,
 	InputAdornment,
-	Modal,
 } from "@mui/material";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
@@ -30,40 +29,28 @@ import TextField from "../components/shared/input/TextField";
 import TaskTimeline from "../components/TaskTimeline";
 import TestCounter from "../components/TestCounter";
 import PasswordInput from "../components/shared/PasswordInput/PasswordInput";
+import { useDispatch } from "react-redux";
+import { openModal } from "../store/slices/modal-slice";
+import ModalTypes from "../constants/modal-types";
 
 function Test() {
-	const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+	const dispatch = useDispatch();
 	const theme = useTheme();
 	return (
 		<Box style={{ backgroundColor: "whitesmoke" }}>
-			<Modal
-				open={isDeleteModalOpen}
-				onClose={() => setIsDeleteModalOpen(false)}
-				aria-labelledby="modal-modal-title"
-				aria-describedby="modal-modal-description"
-			>
-				<Stack
-					style={{
-						position: "absolute",
-						top: "50%",
-						left: "50%",
-						transform: "translate(-50%, -50%)",
-						width: 400,
-						backgroundColor: "white",
-						boxShadow: 24,
-						p: 4,
-						padding: "1rem",
-					}}
-				>
-					<Typography id="modal-modal-title" variant="h6" component="h2">
-						Delete Task
-					</Typography>
-					<Typography id="modal-modal-description" sx={{ mt: 2 }}>
-						Are you sure you want to delete this task?
-					</Typography>
-				</Stack>
-			</Modal>
 			<Container>
+				<Button
+					variant="contained"
+					onClick={() => dispatch(openModal(ModalTypes.TEST))}
+				>
+					Open modal test 1
+				</Button>
+				<Button
+					variant="contained"
+					onClick={() => dispatch(openModal(ModalTypes.TEST2))}
+				>
+					Open modal test 2
+				</Button>
 				<TestCounter />
 				<TestCounter />
 				<Typography variant="h2" gutterBottom>
@@ -809,25 +796,25 @@ function Test() {
 					<Grid item md={12} xs={6} mt={5}>
 						<TaskDetailsCard
 							status={TaskStatus.PENDING}
-							setIsDeleteModalOpen={setIsDeleteModalOpen}
+							setIsDeleteModalOpen={() => {}}
 							startDate={new Date("2023-10-10")}
 							dueDate={Date.now()}
 						/>
 						<TaskDetailsCard
 							status={TaskStatus.IN_PROGRESS}
-							setIsDeleteModalOpen={setIsDeleteModalOpen}
+							setIsDeleteModalOpen={() => {}}
 							startDate={new Date("2023-10-10")}
 							dueDate={Date.now()}
 						/>
 						<TaskDetailsCard
 							status={TaskStatus.IN_REVIEW}
-							setIsDeleteModalOpen={setIsDeleteModalOpen}
+							setIsDeleteModalOpen={() => {}}
 							startDate={new Date("2023-10-10")}
 							dueDate={Date.now()}
 						/>
 						<TaskDetailsCard
 							status={TaskStatus.COMPLETED}
-							setIsDeleteModalOpen={setIsDeleteModalOpen}
+							setIsDeleteModalOpen={() => {}}
 							startDate={new Date("2023-10-10")}
 							dueDate={Date.now()}
 						/>
