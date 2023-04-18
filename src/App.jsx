@@ -11,6 +11,7 @@ import AuthenticationPage from "./pages/AuthenticationPage";
 import PrivatePage from "./pages/PrivatePage";
 import { login } from "./store/slices/authentication-slice";
 import { useDispatch } from "react-redux";
+import SideBar from "./pages/SideBar";
 
 function App() {
 	const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function App() {
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/signup" element={<SignUpPage />} />
 				<Route path="/forgot-password" element={<ForgotPasswordPage />} />
+				<Route path="/sidebar" element={<SideBar />} />
 				<Route path="/change-password" element={<ChangePasswordPage />} />
 				<Route path="/workspace" element={<WorkspacePage />} />
 				<Route path="/auth" element={<AuthenticationPage />} />
