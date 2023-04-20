@@ -77,7 +77,6 @@ function SignUpPage() {
 									variant="outlined"
 									size="small"
 								/>
-
 								<FormLabel>Email Address</FormLabel>
 								<TextField
 									required
