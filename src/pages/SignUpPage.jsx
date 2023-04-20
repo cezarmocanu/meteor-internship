@@ -71,7 +71,6 @@ function SignUpPage() {
 									variant="outlined"
 									size="small"
 								/>
-								
 								<FormLabel>Last Name</FormLabel>
 								<TextField
 									required
