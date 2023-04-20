@@ -8,6 +8,7 @@ import {
 	AlertTitle,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import SideBar from "../components/SideBar";
 
 function ForgotPasswordPage() {
 	const theme = useTheme();
@@ -26,6 +27,7 @@ function ForgotPasswordPage() {
 				backgroundPosition: "center",
 			}}
 		>
+			<SideBar />
 			<Stack
 				spacing={2}
 				sx={{

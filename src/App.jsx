@@ -17,6 +17,7 @@ import { Dialog } from "@mui/material";
 import ModalTypes from "./constants/modal-types";
 import TestContent1 from "./components/modal-content/TestContent1";
 import TestContent2 from "./components/modal-content/TestContent2";
+import Layout from "./components/Layout";
 
 function App() {
 	const dispatch = useDispatch();
@@ -47,7 +48,15 @@ function App() {
 					/>
 					<Route path={RoutePaths.WORKSPACE} element={<WorkspacePage />} />
 					<Route path={RoutePaths.AUTH} element={<AuthenticationPage />} />
-					<Route path={RoutePaths.PRIVATE} element={<PrivatePage />} />
+
+					<Route
+						path={RoutePaths.PRIVATE}
+						element={
+							<Layout>
+								<PrivatePage />
+							</Layout>
+						}
+					/>
 				</Routes>
 			</BrowserRouter>
 

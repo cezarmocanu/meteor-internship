@@ -17,12 +17,7 @@ import Avatar from "@mui/material/Avatar";
 import AddIcon from "@mui/icons-material/Add";
 import Theme from "../theme";
 
-export default function SideBar() {
-	const [isOpen, setIsOpen] = useState(false);
-
-	const toggleDrawer = () => {
-		setIsOpen((old) => !old);
-	};
+export default function SideBar({ isOpen, toggleDrawer }) {
 	const menuItems = [
 		{
 			text: "Overview",
@@ -46,7 +41,7 @@ export default function SideBar() {
 			paddingRight={8}
 		>
 			<List>
-				{menuItems.map((item, index) => (
+				{menuItems.map((item) => (
 					<ListItem key={item.text} disablePadding>
 						<ListItemButton>
 							<ListItemIcon>
@@ -63,8 +58,6 @@ export default function SideBar() {
 	return (
 		<div>
 			<>
-				<Button onClick={toggleDrawer}>Click On Menu</Button>
-
 				<Drawer anchor={"left"} open={isOpen} onClose={toggleDrawer}>
 					<Stack direction={"row"} height="100%">
 						<Stack
