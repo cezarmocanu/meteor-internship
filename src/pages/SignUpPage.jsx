@@ -10,7 +10,7 @@ import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 function SignUpPage() {
 	const theme = useTheme();
 	return (
-		<Stack sx={{ width: "100vw", height: "100vh" }}>
+		<Stack sx={{ width: "100%", height: "100vh" }}>
 			<Stack sx={{ height: "100%" }} direction={"row"}>
 				<Stack
 					sx={{
