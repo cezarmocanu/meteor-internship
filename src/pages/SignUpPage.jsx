@@ -65,13 +65,22 @@ function SignUpPage() {
 								<Typography>It’s Simpe and Easy!!</Typography>
 							</Stack>
 							<Stack>
-								<FormLabel>Label</FormLabel>
+								<FormLabel>Full Name</FormLabel>
 								<TextField
 									required
 									variant="outlined"
-									helperText="Information about the label"
 									size="small"
+								
 								/>
+								
+								<FormLabel>Last Name</FormLabel>
+								<TextField
+									required
+									variant="outlined"
+									size="small"
+							
+								/>
+
 								<FormLabel>Email Address</FormLabel>
 								<TextField
 									required
