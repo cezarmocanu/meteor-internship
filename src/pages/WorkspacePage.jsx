@@ -6,7 +6,7 @@ import FormLabel from "../components/shared/input/FormLabel";
 import TextField from "../components/shared/input/TextField";
 function WorkspacePage() {
 	return (
-		<Stack sx={{ width: "100vw", height: "100vh" }}>
+		<Stack sx={{ width: "100%", height: "100vh" }}>
 			<Stack sx={{ height: "100%" }} direction={"row"}>
 				<Stack
 					sx={{
