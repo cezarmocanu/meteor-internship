@@ -13,7 +13,6 @@ const AppBar = styled(MuiAppBar, {
 	shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({}));
 
-const drawerWidth = 240;
 const Layout = ({ children }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
