@@ -17,6 +17,7 @@ import { Dialog } from "@mui/material";
 import ModalTypes from "./constants/modal-types";
 import TestContent1 from "./components/modal-content/TestContent1";
 import TestContent2 from "./components/modal-content/TestContent2";
+import Layout from "./components/Layout";
 
 function App() {
 	const dispatch = useDispatch();
@@ -33,8 +34,40 @@ function App() {
 		<>
 			<BrowserRouter>
 				<Routes>
-					<Route path={RoutePaths.ROOT} element={<TasksPage />} />
-					<Route path={RoutePaths.TEST} element={<Test />} />
+					<Route
+						path={RoutePaths.PRIVATE}
+						element={
+							<Layout>
+								<PrivatePage />
+							</Layout>
+						}
+					/>
+					<Route
+						path={RoutePaths.TEST}
+						element={
+							<Layout>
+								<Test />
+							</Layout>
+						}
+					/>
+					<Route
+						path={RoutePaths.WORKSPACE}
+						element={
+							<Layout>
+								<WorkspacePage />
+							</Layout>
+						}
+					/>
+					<Route
+						exact
+						path={RoutePaths.ROOT}
+						element={
+							<Layout>
+								<TasksPage />
+							</Layout>
+						}
+					/>
+					<Route path={RoutePaths.AUTH} element={<AuthenticationPage />} />
 					<Route path={RoutePaths.LOGIN} element={<LoginPage />} />
 					<Route path={RoutePaths.SIGNUP} element={<SignUpPage />} />
 					<Route
@@ -45,9 +78,6 @@ function App() {
 						path={RoutePaths.CHANGE_PASSWORD}
 						element={<ChangePasswordPage />}
 					/>
-					<Route path={RoutePaths.WORKSPACE} element={<WorkspacePage />} />
-					<Route path={RoutePaths.AUTH} element={<AuthenticationPage />} />
-					<Route path={RoutePaths.PRIVATE} element={<PrivatePage />} />
 				</Routes>
 			</BrowserRouter>
 
