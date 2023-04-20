@@ -4,15 +4,11 @@ import { closeModal } from "../../store/slices/modal-slice";
 import {
 	DialogTitle,
 	DialogContent,
-	DialogContentText,
 	DialogActions,
 	IconButton,
 	Stack,
-	FormControl,
-	InputLabel,
 	MenuItem,
 	InputAdornment,
-	Select,
 	Typography,
 	Grid,
 } from "@mui/material";
@@ -39,7 +35,7 @@ function CreateTask() {
 	return (
 		<Stack sx={{ width: "35vw" }}>
 			<Stack sx={{ width: "100%" }}>
-				<DialogActions>
+				<DialogActions sx={{ paddingBottom: 0 }}>
 					<IconButton
 						onClick={() => dispatch(closeModal())}
 						color="theme.text.primary"
@@ -47,7 +43,7 @@ function CreateTask() {
 						<CloseIcon />
 					</IconButton>
 				</DialogActions>
-				<DialogTitle variant="h4" fontWeight="bold" sx={{ paddingY: 0 }}>
+				<DialogTitle variant="h5" fontWeight="bold" sx={{ paddingTop: 0 }}>
 					Create Task
 				</DialogTitle>
 				<DialogContent>
