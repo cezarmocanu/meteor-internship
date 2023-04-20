@@ -51,6 +51,12 @@ function Test() {
 				>
 					Open modal test 2
 				</Button>
+				<Button
+					variant="contained"
+					onClick={() => dispatch(openModal(ModalTypes.CreateTask))}
+				>
+					CreateTask
+				</Button>
 				<TestCounter />
 				<TestCounter />
 				<Typography variant="h2" gutterBottom>
@@ -206,7 +212,6 @@ function Test() {
 								helperText="Information about the input"
 							/>
 						</Stack>
-
 						<Stack>
 							<FormLabel disabled>Email Address</FormLabel>
 							<TextField
@@ -552,13 +557,11 @@ function Test() {
 				<Chip avatar={<Avatar> </Avatar>} color="primary" label="just text" />
 				<Box>
 					<Chip avatar={<Avatar> </Avatar>} color="primary" variant="dot" />
-
 					<Chip
 						avatar={<Avatar> </Avatar>}
 						color="primary"
 						variant="outlined"
 					/>
-
 					<Chip
 						avatar={<Avatar> </Avatar>}
 						color="primary"
@@ -568,13 +571,11 @@ function Test() {
 				</Box>
 				<Box>
 					<Chip avatar={<Avatar> </Avatar>} color="secondary" variant="dot" />
-
 					<Chip
 						avatar={<Avatar> </Avatar>}
 						color="secondary"
 						variant="outlined"
 					/>
-
 					<Chip
 						avatar={<Avatar> </Avatar>}
 						color="secondary"
@@ -584,9 +585,7 @@ function Test() {
 				</Box>
 				<Box>
 					<Chip avatar={<Avatar> </Avatar>} color="error" variant="dot" />
-
 					<Chip avatar={<Avatar> </Avatar>} color="error" variant="outlined" />
-
 					<Chip
 						avatar={<Avatar> </Avatar>}
 						color="error"
@@ -596,13 +595,11 @@ function Test() {
 				</Box>
 				<Box>
 					<Chip avatar={<Avatar> </Avatar>} variant="dot" color="warning" />
-
 					<Chip
 						avatar={<Avatar> </Avatar>}
 						color="warning"
 						variant="outlined"
 					/>
-
 					<Chip
 						avatar={<Avatar> </Avatar>}
 						color="warning"
@@ -612,9 +609,7 @@ function Test() {
 				</Box>
 				<Box>
 					<Chip avatar={<Avatar> </Avatar>} color="info" variant="dot" />
-
 					<Chip avatar={<Avatar> </Avatar>} color="info" variant="outlined" />
-
 					<Chip
 						avatar={<Avatar> </Avatar>}
 						color="info"
@@ -624,9 +619,7 @@ function Test() {
 				</Box>
 				<Box>
 					<Chip avatar={<Avatar> </Avatar>} color="info" variant="dot" />
-
 					<Chip avatar={<Avatar> </Avatar>} color="info" variant="outlined" />
-
 					<Chip
 						avatar={<Avatar> </Avatar>}
 						color="info"
