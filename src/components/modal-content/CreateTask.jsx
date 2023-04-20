@@ -23,9 +23,9 @@ function CreateTask() {
 					location data to Google, even when no apps are running.
 				</DialogContentText>
 			</DialogContent>
-			{/* <DialogActions>
-				<Button onClick={() => dispatch(closeModal())}>Create Task</Button>
-			</DialogActions> */}
+			<DialogActions>
+				<Button>Create Task</Button>
+			</DialogActions>
 		</>
 	);
 }
