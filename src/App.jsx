@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Test from "./pages/TestPage";
 import TasksPage from "./pages/TasksPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -10,11 +10,17 @@ import WorkspacePage from "./pages/WorkspacePage";
 import AuthenticationPage from "./pages/AuthenticationPage";
 import PrivatePage from "./pages/PrivatePage";
 import { login } from "./store/slices/authentication-slice";
-import { useDispatch } from "react-redux";
-import SideBar from "./pages/SideBar";
+import { useDispatch, useSelector } from "react-redux";
+import { selectModal, closeModal } from "./store/slices/modal-slice";
+import RoutePaths from "./constants/route-paths";
+import { Dialog } from "@mui/material";
+import ModalTypes from "./constants/modal-types";
+import TestContent1 from "./components/modal-content/TestContent1";
+import TestContent2 from "./components/modal-content/TestContent2";
 
 function App() {
 	const dispatch = useDispatch();
+	const modalState = useSelector(selectModal);
 
 	useEffect(() => {
 		const token = localStorage.getItem("token");
@@ -24,20 +30,32 @@ function App() {
 	}, []);
 
 	return (
-		<div>
-			<Routes>
-				<Route path="/" element={<TasksPage />} />
-				<Route path="/test" element={<Test />} />
-				<Route path="/login" element={<LoginPage />} />
-				<Route path="/signup" element={<SignUpPage />} />
-				<Route path="/forgot-password" element={<ForgotPasswordPage />} />
-				<Route path="/sidebar" element={<SideBar />} />
-				<Route path="/change-password" element={<ChangePasswordPage />} />
-				<Route path="/workspace" element={<WorkspacePage />} />
-				<Route path="/auth" element={<AuthenticationPage />} />
-				<Route path="/private" element={<PrivatePage />} />
-			</Routes>
-		</div>
+		<>
+			<BrowserRouter>
+				<Routes>
+					<Route path={RoutePaths.ROOT} element={<TasksPage />} />
+					<Route path={RoutePaths.TEST} element={<Test />} />
+					<Route path={RoutePaths.LOGIN} element={<LoginPage />} />
+					<Route path={RoutePaths.SIGNUP} element={<SignUpPage />} />
+					<Route
+						path={RoutePaths.FORGOT_PASSWORD}
+						element={<ForgotPasswordPage />}
+					/>
+					<Route
+						path={RoutePaths.CHANGE_PASSWORD}
+						element={<ChangePasswordPage />}
+					/>
+					<Route path={RoutePaths.WORKSPACE} element={<WorkspacePage />} />
+					<Route path={RoutePaths.AUTH} element={<AuthenticationPage />} />
+					<Route path={RoutePaths.PRIVATE} element={<PrivatePage />} />
+				</Routes>
+			</BrowserRouter>
+
+			<Dialog open={modalState ?? false} onClose={() => dispatch(closeModal())}>
+				{modalState === ModalTypes.TEST && <TestContent1 />}
+				{modalState === ModalTypes.TEST2 && <TestContent2 />}
+			</Dialog>
+		</>
 	);
 }
 
