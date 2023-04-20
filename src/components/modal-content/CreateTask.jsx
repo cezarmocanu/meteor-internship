@@ -14,6 +14,7 @@ import {
 	InputAdornment,
 	Select,
 	Typography,
+	Grid,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import FormLabel from "./../shared/input/FormLabel";
@@ -56,46 +57,52 @@ function CreateTask() {
 						</FormLabel>
 						<TextField required variant="outlined" />
 					</Stack>
-					<Stack direction={"row"} spacing={2}>
-						<Stack gap={1}>
-							<FormLabel>
-								<Typography fontWeight="medium">Task Priority</Typography>
-							</FormLabel>
-							<TextField select placeholder="Select" defaultValue="">
-								{options.map((option) => (
-									<MenuItem key={option.label} value={option.label}>
-										{option.label}
-									</MenuItem>
-								))}
-							</TextField>
-						</Stack>
-						<Stack gap={1}>
-							<FormLabel>
-								<Typography fontWeight="medium">Due Date</Typography>
-							</FormLabel>
-							<TextField
-								onFocus={onFocus}
-								onBlur={onBlur}
-								InputProps={{
-									classes: {
-										input: "CustomTextField",
-									},
-									endAdornment: (
-										<InputAdornment position="end">
-											<CalendarMonthOutlinedIcon />
-										</InputAdornment>
-									),
-								}}
-								onChange={(e) => {
-									if (e.target.value) setHasValue(true);
-									else setHasValue(false);
-								}}
-								label="Today"
-								type={hasValue || focus ? "datetime-local" : "text"}
-								required
-								variant="outlined"
-							/>
-						</Stack>
+					<Stack direction={"row"}>
+						<Grid container spacing={2}>
+							<Grid item xs={6}>
+								<Stack gap={1}>
+									<FormLabel>
+										<Typography fontWeight="medium">Task Priority</Typography>
+									</FormLabel>
+									<TextField select>
+										{options.map((option) => (
+											<MenuItem key={option.label} value={option.label}>
+												{option.label}
+											</MenuItem>
+										))}
+									</TextField>
+								</Stack>
+							</Grid>
+							<Grid item xs={6}>
+								<Stack gap={1}>
+									<FormLabel>
+										<Typography fontWeight="medium">Due Date</Typography>
+									</FormLabel>
+									<TextField
+										onFocus={onFocus}
+										onBlur={onBlur}
+										InputProps={{
+											classes: {
+												input: "CustomTextField",
+											},
+											endAdornment: (
+												<InputAdornment position="end">
+													<CalendarMonthOutlinedIcon />
+												</InputAdornment>
+											),
+										}}
+										onChange={(e) => {
+											if (e.target.value) setHasValue(true);
+											else setHasValue(false);
+										}}
+										label="Today"
+										type={hasValue || focus ? "datetime-local" : "text"}
+										required
+										variant="outlined"
+									/>
+								</Stack>
+							</Grid>
+						</Grid>
 					</Stack>
 					<Stack gap={1}>
 						<FormLabel>
