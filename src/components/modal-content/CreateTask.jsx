@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useTheme } from "@mui/material/styles";
 import { useDispatch } from "react-redux";
 import { closeModal } from "../../store/slices/modal-slice";
 import {
@@ -17,23 +17,23 @@ import FormLabel from "./../shared/input/FormLabel";
 import TextField from "./../shared/input/TextField";
 import Button from "./../shared/button/Button";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import OPTIONS from "../CreateTaskItems";
 
 function CreateTask() {
 	const dispatch = useDispatch();
-	const [focus, setFocused] = useState(false);
-	const [hasValue, setHasValue] = useState(false);
-	const onFocus = () => setFocused(true);
-	const onBlur = () => setFocused(false);
-
-	const options = [
-		{ label: "Low", id: 1 },
-		{ label: "Medium", id: 2 },
-		{ label: "High", id: 3 },
-	];
-
+	const theme = useTheme();
 	return (
-		<Stack sx={{ width: "35vw" }}>
+		<Stack
+			sx={{
+				[theme.breakpoints.up("lg")]: {
+					width: "35vw",
+				},
+				[theme.breakpoints.up("md")]: {
+					width: "50vw",
+				},
+				width: "65vw",
+			}}
+		>
 			<Stack sx={{ width: "100%" }}>
 				<DialogActions sx={{ paddingBottom: 0 }}>
 					<IconButton
@@ -62,7 +62,7 @@ function CreateTask() {
 											<Typography fontWeight="medium">Task Priority</Typography>
 										</FormLabel>
 										<TextField select>
-											{options.map((option) => (
+											{OPTIONS.map((option) => (
 												<MenuItem key={option.label} value={option.label}>
 													{option.label}
 												</MenuItem>
@@ -76,24 +76,13 @@ function CreateTask() {
 											<Typography fontWeight="medium">Due Date</Typography>
 										</FormLabel>
 										<TextField
-											onFocus={onFocus}
-											onBlur={onBlur}
 											InputProps={{
-												classes: {
-													input: "CustomTextField",
-												},
 												endAdornment: (
 													<InputAdornment position="end">
 														<CalendarMonthOutlinedIcon />
 													</InputAdornment>
 												),
 											}}
-											onChange={(e) => {
-												if (e.target.value) setHasValue(true);
-												else setHasValue(false);
-											}}
-											label="Today"
-											type={hasValue || focus ? "datetime-local" : "text"}
 											required
 											variant="outlined"
 										/>
