@@ -16,8 +16,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import FormLabel from "./../shared/input/FormLabel";
 import TextField from "./../shared/input/TextField";
 import Button from "./../shared/button/Button";
-import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import OPTIONS from "../CreateTaskItems";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 function CreateTask() {
 	const dispatch = useDispatch();
@@ -75,17 +77,9 @@ function CreateTask() {
 										<FormLabel>
 											<Typography fontWeight="medium">Due Date</Typography>
 										</FormLabel>
-										<TextField
-											InputProps={{
-												endAdornment: (
-													<InputAdornment position="end">
-														<CalendarMonthOutlinedIcon />
-													</InputAdornment>
-												),
-											}}
-											required
-											variant="outlined"
-										/>
+										<LocalizationProvider dateAdapter={AdapterDayjs}>
+											<DatePicker />
+										</LocalizationProvider>
 									</Stack>
 								</Grid>
 							</Grid>
