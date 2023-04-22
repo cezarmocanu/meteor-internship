@@ -82,7 +82,7 @@ function App() {
 				</Routes>
 			</BrowserRouter>
 
-			<Dialog open={modalState ?? false} onClose={() => dispatch(closeModal())}>
+			<Dialog open={Boolean(modalState)} onClose={() => dispatch(closeModal())}>
 				{modalState === ModalTypes.TEST && <TestContent1 />}
 				{modalState === ModalTypes.TEST2 && <TestContent2 />}
 				{modalState === ModalTypes.CreateTask && <CreateTask />}
