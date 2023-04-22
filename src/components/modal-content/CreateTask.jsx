@@ -1,6 +1,7 @@
 import { useTheme } from "@mui/material/styles";
 import { useDispatch } from "react-redux";
-import { closeModal } from "../../store/slices/modal-slice";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import {
 	DialogTitle,
 	DialogContent,
@@ -8,18 +9,18 @@ import {
 	IconButton,
 	Stack,
 	MenuItem,
-	InputAdornment,
 	Typography,
 	Grid,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+
+import Button from "./../shared/button/Button";
 import FormLabel from "./../shared/input/FormLabel";
 import TextField from "./../shared/input/TextField";
-import Button from "./../shared/button/Button";
+import DatePicker from "./../shared/date-picker/DatePicker";
+
 import OPTIONS from "../CreateTaskItems";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { closeModal } from "../../store/slices/modal-slice";
 
 function CreateTask() {
 	const dispatch = useDispatch();
