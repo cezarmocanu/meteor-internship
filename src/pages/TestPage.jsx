@@ -28,7 +28,7 @@ import FormLabel from "../components/shared/input/FormLabel";
 import TextField from "../components/shared/input/TextField";
 import TaskTimeline from "../components/TaskTimeline";
 import TestCounter from "../components/TestCounter";
-import PasswordInput from "../components/shared/PasswordInput/PasswordInput";
+import PasswordInput from "../components/shared/password-input/PasswordInput";
 import { useDispatch } from "react-redux";
 import { openModal } from "../store/slices/modal-slice";
 import ModalTypes from "../constants/modal-types";
