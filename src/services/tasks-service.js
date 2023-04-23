@@ -9,5 +9,14 @@ const getTasks = async (workspaceId) => {
             "Authorization": `Bearer ${token}`,
         },
     });
-    
-}
+    if (response.status !== 200) {
+        return [];
+    }
+    const data = await response.json();
+    return data.items;
+};
+const taskService = {
+    getTasks,
+};
+
+export default taskService;
