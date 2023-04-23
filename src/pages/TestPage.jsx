@@ -53,7 +53,7 @@ function Test() {
 				</Button>
 				<Button
 					variant="contained"
-					onClick={() => dispatch(openModal(ModalTypes.CreateTask))}
+					onClick={() => dispatch(openModal(ModalTypes.CREATE_TASK))}
 				>
 					CreateTask
 				</Button>

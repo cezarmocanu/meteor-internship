@@ -13,18 +13,20 @@ import {
 	Grid,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-
 import Button from "./../shared/button/Button";
 import FormLabel from "./../shared/input/FormLabel";
 import TextField from "./../shared/input/TextField";
 import DatePicker from "./../shared/date-picker/DatePicker";
-
-import OPTIONS from "../CreateTaskItems";
 import { closeModal } from "../../store/slices/modal-slice";
 
 function CreateTask() {
 	const dispatch = useDispatch();
 	const theme = useTheme();
+	const OPTIONS = [
+		{ label: "Low", id: 1 },
+		{ label: "Medium", id: 2 },
+		{ label: "High", id: 3 },
+	];
 	return (
 		<Stack
 			sx={{

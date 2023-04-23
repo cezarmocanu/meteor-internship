@@ -85,7 +85,7 @@ function App() {
 			<Dialog open={Boolean(modalState)} onClose={() => dispatch(closeModal())}>
 				{modalState === ModalTypes.TEST && <TestContent1 />}
 				{modalState === ModalTypes.TEST2 && <TestContent2 />}
-				{modalState === ModalTypes.CreateTask && <CreateTask />}
+				{modalState === ModalTypes.CREATE_TASK && <CreateTask />}
 			</Dialog>
 		</>
 	);
