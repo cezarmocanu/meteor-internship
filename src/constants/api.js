@@ -4,4 +4,7 @@ export const ENDPOINTS = {
 	AUTH: {
 		LOGIN: `${API}/v1/auth/login`,
 	},
+	TASKS:{
+		GET_TASKS:(workspaceId) => `${API}/v1/workspaces/${workspaceId}/tasks`,
+	},
 };
