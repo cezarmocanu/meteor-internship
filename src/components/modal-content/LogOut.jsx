@@ -8,7 +8,7 @@ import {
 	Button,
 } from "@mui/material";
 
-function TestContent1() {
+function TestContent3() {
 	const dispatch = useDispatch();
 
 	return (
@@ -27,4 +27,4 @@ function TestContent1() {
 	);
 }
 
-export default TestContent1;
+export default TestContent3;

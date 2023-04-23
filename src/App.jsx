@@ -17,6 +17,8 @@ import { Dialog } from "@mui/material";
 import ModalTypes from "./constants/modal-types";
 import TestContent1 from "./components/modal-content/TestContent1";
 import TestContent2 from "./components/modal-content/TestContent2";
+import TestContent3 from  "./components/modal-content/LogOut";
+
 
 function App() {
 	const dispatch = useDispatch();
