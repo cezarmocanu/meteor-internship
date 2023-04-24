@@ -32,6 +32,7 @@ import PasswordInput from "../components/shared/PasswordInput/PasswordInput";
 import { useDispatch } from "react-redux";
 import { openModal } from "../store/slices/modal-slice";
 import ModalTypes from "../constants/modal-types";
+import DeleteModalContent from "../components/modal-content/DeleteModalContent";
 
 function Test() {
 	const dispatch = useDispatch();
@@ -39,6 +40,17 @@ function Test() {
 	return (
 		<Box style={{ backgroundColor: "whitesmoke" }}>
 			<Container>
+				<Stack>
+				<DeleteModalContent onClick={() => <DeleteModalContent
+  open={open}
+  onClose={handleClose}
+  onConfirm={handleDelete}
+  title="Confirm deletion"
+  body="Are you sure you want to delete this content?"
+/>}>
+	
+</DeleteModalContent>
+				</Stack>
 				<Button
 					variant="contained"
 					onClick={() => dispatch(openModal(ModalTypes.TEST))}
@@ -824,7 +836,9 @@ function Test() {
 			<TaskTimeline startDate={Date.now()} dueDate={Date.now()} />
 			<TaskTimeline startDate={new Date("2023-10-10")} dueDate={Date.now()} />
 			<PasswordInput />
+			
 		</Box>
+		
 	);
 }
 
