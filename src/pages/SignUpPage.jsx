@@ -128,7 +128,12 @@ function SignUpPage() {
 									size="small"
 								/>
 							</Stack>
-							<Button variant="contained" color="primary" size="large">
+							<Button
+								type="submit"
+								variant="contained"
+								color="primary"
+								size="large"
+							>
 								Create account
 							</Button>
 						</Stack>
