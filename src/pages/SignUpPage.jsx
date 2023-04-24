@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Typography, Stack, Box, InputAdornment } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import ContainedImage from "../components/ContainedImage";
@@ -9,6 +9,26 @@ import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 
 function SignUpPage() {
 	const theme = useTheme();
+
+	const [account, setAccount] = useState({
+		firstName: "",
+		lastName: "",
+		email: "",
+		password: "",
+	});
+
+	const handleTextFieldChange = (e) => {
+		setAccount((prevState) => ({
+			...prevState,
+			[e.target.name]: e.target.value,
+		}));
+	};
+
+	console.log("account", account);
+
+	const handleCreateAccount = (e) => {
+		console.log("account", account);
+	};
 	return (
 		<Stack sx={{ width: "100%", height: "100vh" }}>
 			<Stack sx={{ height: "100%" }} direction={"row"}>
@@ -64,21 +84,27 @@ function SignUpPage() {
 								</Typography>
 								<Typography>It’s Simpe and Easy!!</Typography>
 							</Stack>
-							<Stack>
+							<Stack onSubmit={handleCreateAccount}>
 								<FormLabel>First Name</FormLabel>
 								<TextField
+									name="firstName"
+									onChange={handleTextFieldChange}
 									required
 									variant="outlined"
 									size="small"
 								/>
 								<FormLabel>Last Name</FormLabel>
 								<TextField
+									name="lastName"
+									onChange={handleTextFieldChange}
 									required
 									variant="outlined"
 									size="small"
 								/>
 								<FormLabel>Email Address</FormLabel>
 								<TextField
+									name="email"
+									onChange={handleTextFieldChange}
 									required
 									variant="outlined"
 									helperText="Example. mano@gmail.com"
@@ -86,6 +112,8 @@ function SignUpPage() {
 								/>
 								<FormLabel>Enter A Password</FormLabel>
 								<TextField
+									name="password"
+									onChange={handleTextFieldChange}
 									InputProps={{
 										endAdornment: (
 											<InputAdornment position="end">
