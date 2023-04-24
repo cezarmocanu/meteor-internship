@@ -24,9 +24,10 @@ function SignUpPage() {
 		}));
 	};
 
-	console.log("account", account);
+	/* console.log("account", account); */
 
 	const handleCreateAccount = (e) => {
+		e.preventDefault();
 		console.log("account", account);
 	};
 	return (
@@ -84,58 +85,60 @@ function SignUpPage() {
 								</Typography>
 								<Typography>It’s Simpe and Easy!!</Typography>
 							</Stack>
-							<Stack onSubmit={handleCreateAccount}>
-								<FormLabel>First Name</FormLabel>
-								<TextField
-									name="firstName"
-									onChange={handleTextFieldChange}
-									required
-									variant="outlined"
-									size="small"
-								/>
-								<FormLabel>Last Name</FormLabel>
-								<TextField
-									name="lastName"
-									onChange={handleTextFieldChange}
-									required
-									variant="outlined"
-									size="small"
-								/>
-								<FormLabel>Email Address</FormLabel>
-								<TextField
-									name="email"
-									onChange={handleTextFieldChange}
-									required
-									variant="outlined"
-									helperText="Example. mano@gmail.com"
-									size="small"
-								/>
-								<FormLabel>Enter A Password</FormLabel>
-								<TextField
-									name="password"
-									onChange={handleTextFieldChange}
-									InputProps={{
-										endAdornment: (
-											<InputAdornment position="end">
-												<VisibilityOutlinedIcon />
-											</InputAdornment>
-										),
-									}}
-									type="password"
-									required
-									variant="outlined"
-									helperText="Upto 8 characters with an Uppercase, symbol and number"
-									size="small"
-								/>
-							</Stack>
-							<Button
-								type="submit"
-								variant="contained"
-								color="primary"
-								size="large"
-							>
-								Create account
-							</Button>
+							<form onSubmit={handleCreateAccount}>
+								<Stack>
+									<FormLabel>First Name</FormLabel>
+									<TextField
+										name="firstName"
+										onChange={handleTextFieldChange}
+										required
+										variant="outlined"
+										size="small"
+									/>
+									<FormLabel>Last Name</FormLabel>
+									<TextField
+										name="lastName"
+										onChange={handleTextFieldChange}
+										required
+										variant="outlined"
+										size="small"
+									/>
+									<FormLabel>Email Address</FormLabel>
+									<TextField
+										name="email"
+										onChange={handleTextFieldChange}
+										required
+										variant="outlined"
+										helperText="Example. mano@gmail.com"
+										size="small"
+									/>
+									<FormLabel>Enter A Password</FormLabel>
+									<TextField
+										name="password"
+										onChange={handleTextFieldChange}
+										InputProps={{
+											endAdornment: (
+												<InputAdornment position="end">
+													<VisibilityOutlinedIcon />
+												</InputAdornment>
+											),
+										}}
+										type="password"
+										required
+										variant="outlined"
+										helperText="Upto 8 characters with an Uppercase, symbol and number"
+										size="small"
+									/>
+								</Stack>
+								<Button
+									type="submit"
+									variant="contained"
+									color="primary"
+									size="large"
+								>
+									Create account
+								</Button>
+							</form>
 						</Stack>
 					</Stack>
 				</Stack>
