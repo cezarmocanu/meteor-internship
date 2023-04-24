@@ -24,8 +24,6 @@ function SignUpPage() {
 		}));
 	};
 
-	/* console.log("account", account); */
-
 	const handleCreateAccount = (e) => {
 		e.preventDefault();
 		console.log("account", account);
