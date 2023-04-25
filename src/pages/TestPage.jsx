@@ -32,12 +32,14 @@ import PasswordInput from "../components/shared/PasswordInput/PasswordInput";
 import { useDispatch } from "react-redux";
 import { openModal } from "../store/slices/modal-slice";
 import ModalTypes from "../constants/modal-types";
+import NoTasksPlaceholder from "../components/widget/NoTasksPlaceholder";
 
 function Test() {
 	const dispatch = useDispatch();
 	const theme = useTheme();
 	return (
 		<Box style={{ backgroundColor: "whitesmoke" }}>
+		    <NoTasksPlaceholder/>
 			<Container>
 				<Button
 					variant="contained"
