@@ -14,8 +14,25 @@ const login = async (username, password) => {
 	localStorage.setItem("token", data.token);
 };
 
+const token = localStorage.getItem("token");
+
+const logout = async () => {
+
+	const response = await fetch(ENDPOINTS.AUTH.LOGOUT, {
+		method: "POST",
+		headers: {
+			Authorization : `Bearer ${token}`,
+		},
+	});
+	
+	const data = await response.json();
+	localStorage.removeItem("token");
+	console.log("logout", data);
+};
+
 const authService = {
 	login,
+	logout,
 };
 
 export default authService;
