@@ -4,7 +4,6 @@ import { useTheme } from "@mui/material/styles";
 import { Stack, InputAdornment, IconButton } from "@mui/material";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
-import FormLabel from "../../shared/input/FormLabel";
 import TextField from "../../shared/input/TextField";
 
 function PasswordInput() {
@@ -13,9 +12,8 @@ function PasswordInput() {
 	const handleClickShowPassword = () => setShowPassword((show) => !show);
 
 	return (
-		<Stack alignItems="center">
+		<Stack alignItems="left">
 			<Stack gap={1}>
-				<FormLabel>Password</FormLabel>
 				<TextField
 					type={showPassword ? "text" : "password"}
 					InputProps={{
