@@ -18,6 +18,7 @@ import ModalTypes from "./constants/modal-types";
 import TestContent1 from "./components/modal-content/TestContent1";
 import TestContent2 from "./components/modal-content/TestContent2";
 import Layout from "./components/Layout";
+import TasksMockPage from "./pages/TasksMockPage";
 
 function App() {
 	const dispatch = useDispatch();
@@ -55,6 +56,14 @@ function App() {
 						element={
 							<Layout>
 								<WorkspacePage />
+							</Layout>
+						}
+					/>
+					<Route
+						path={RoutePaths.TASKS}
+						element={
+							<Layout>
+								<TasksMockPage />
 							</Layout>
 						}
 					/>
