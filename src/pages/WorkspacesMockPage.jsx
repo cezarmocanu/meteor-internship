@@ -8,9 +8,10 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 function WorkspaceMockPage(){
     const theme = useTheme();
 return (
-    <Stack>
+    <Stack
+    sx={{p:5,}}>
         <Stack direction="row"
-        justifyContent="space-around"
+        justifyContent="space-between"
         alignItems="center">
             <Typography variant="h3" gutterBottom>
                 Workspaces
@@ -20,7 +21,8 @@ return (
 			</Button>
         </Stack>
         <Stack direction="row"
-        justifyContent="space-around">
+        justifyContent="space-around"
+        sx={{p:3,}}>
         <CardComponent>
 							<CardHeader
 								title={
@@ -99,7 +101,7 @@ return (
                                   Workspace description lorem ipsum dolor sit amet.
 								</Typography>
 								<CardActions>
-									<Stack
+									<Stack 
 										direction="row"
 										alignItems="center"
 										sx={{ width: "100%" }}
@@ -120,7 +122,8 @@ return (
 						</CardComponent>
         </Stack>
         <Stack direction="row"
-        justifyContent="space-around">
+        justifyContent="space-around"
+        sx={{p:3,}}>
         <CardComponent>
 							<CardHeader
 								title={
