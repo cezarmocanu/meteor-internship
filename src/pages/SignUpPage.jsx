@@ -66,17 +66,9 @@ function SignUpPage() {
 							</Stack>
 							<Stack>
 								<FormLabel>First Name</FormLabel>
-								<TextField
-									required
-									variant="outlined"
-									size="small"
-								/>
+								<TextField required variant="outlined" size="small" />
 								<FormLabel>Last Name</FormLabel>
-								<TextField
-									required
-									variant="outlined"
-									size="small"
-								/>
+								<TextField required variant="outlined" size="small" />
 								<FormLabel>Email Address</FormLabel>
 								<TextField
 									required
