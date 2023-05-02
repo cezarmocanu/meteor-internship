@@ -82,7 +82,6 @@ function SignUpPage() {
 								</Typography>
 								<Typography>It’s Simpe and Easy!!</Typography>
 							</Stack>
-
 							<Stack>
 								<FormLabel>First Name</FormLabel>
 								<TextField
