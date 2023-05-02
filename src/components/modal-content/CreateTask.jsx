@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import { useDispatch } from "react-redux";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -11,6 +12,7 @@ import {
 	MenuItem,
 	Typography,
 	Grid,
+	Select,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import Button from "./../shared/button/Button";
@@ -20,6 +22,7 @@ import DatePicker from "./../shared/date-picker/DatePicker";
 import { closeModal } from "../../store/slices/modal-slice";
 
 function CreateTask() {
+	const [select, setSelect] = useState("");
 	const dispatch = useDispatch();
 	const theme = useTheme();
 	const OPTIONS = [
@@ -27,6 +30,9 @@ function CreateTask() {
 		{ label: "Medium", id: 2 },
 		{ label: "High", id: 3 },
 	];
+	const handleChangeSelect = (event) => {
+		setSelect(event.target.value);
+	};
 	return (
 		<Stack
 			sx={{
@@ -66,7 +72,11 @@ function CreateTask() {
 										<FormLabel>
 											<Typography fontWeight="medium">Task Priority</Typography>
 										</FormLabel>
-										<TextField select>
+										<TextField
+											value={select}
+											onChange={handleChangeSelect}
+											select
+										>
 											{OPTIONS.map((option) => (
 												<MenuItem key={option.label} value={option.label}>
 													{option.label}
