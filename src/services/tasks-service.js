@@ -15,7 +15,7 @@ const getTasks = async (workspaceId) => {
 		return [];
 	}
 	const data = await response.json();
-	return data.items;
+	return data;
 };
 
 const taskService = {

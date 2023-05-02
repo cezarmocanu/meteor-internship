@@ -4,12 +4,12 @@ import taskService from "../../services/tasks-service";
 const taskSlice = createSlice({
 	name: "tasks",
 	initialState: {
-		items: [],
+		tasks: [],
 		isLoading: false,
 	},
 	reducers: {
 		setTasks(state, action) {
-			state.items = action.payload;
+			state.tasks = action.payload;
 			return state;
 		},
 		setLoading(state, action) {
@@ -28,7 +28,7 @@ export const fetchTasks = (workspaceId) => async (dispatch) => {
 	dispatch(setLoading(false));
 };
 
-export const selectTasks = (state) => state.tasks.items;
+export const selectTasks = (state) => state.tasks.tasks;
 export const selectTasksLoading = (state) => state.tasks.isLoading;
 
 export default taskSlice.reducer;
