@@ -19,11 +19,10 @@ function PasswordInput() {
 					type={showPassword ? "text" : "password"}
 					InputProps={{
 						endAdornment: (
-							<InputAdornment>
+							<InputAdornment position="end">
 								<IconButton
 									aria-label="toggle password visibility"
 									onClick={handleClickShowPassword}
-									edge="end"
 								>
 									{showPassword ? (
 										<VisibilityOffOutlinedIcon />
