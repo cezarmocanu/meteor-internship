@@ -22,7 +22,8 @@ return (
         </Stack>
         <Stack direction="row"
         justifyContent="space-around"
-        sx={{p:3,}}>
+        gap="2rem"
+        sx={{py:3,}}>
         <CardComponent>
 							<CardHeader
 								title={
@@ -35,14 +36,14 @@ return (
 								<Typography variant="body1" color="text.secondary">
                                   Workspace description lorem ipsum dolor sit amet.
 								</Typography>
-								<CardActions>
+								<CardActions  sx={{ p:0,}}>
 									<Stack
 										direction="row"
-										justifyContent="space-between"
 										alignItems="center"
 										sx={{ width: "100%" }}
 									>
-										<Button size="medium" variant="link">View</Button>
+										<Button size="medium" variant="link" sx={{ p:0,
+										justifyContent: 'flex-start',}}>View</Button>
 										<Avatar
 											variant="circular"
 											sx={{
@@ -68,13 +69,15 @@ return (
 								<Typography variant="body1" color="text.secondary">
                                   Workspace description lorem ipsum dolor sit amet.
 								</Typography>
-								<CardActions>
+								<CardActions sx={{ p:0,}}>
 									<Stack
 										direction="row"
 										alignItems="center"
-										sx={{ width: "100%" }}
+
+										sx={{ width: "100%",}}
 									>
-										<Button size="medium" variant="link">View</Button>
+										<Button size="medium" variant="link" sx={{ p:0,
+										justifyContent: 'flex-start',}}>View</Button>
 										<Avatar
 											variant="circular"
 											sx={{
@@ -100,13 +103,14 @@ return (
 								<Typography variant="body1" color="text.secondary">
                                   Workspace description lorem ipsum dolor sit amet.
 								</Typography>
-								<CardActions>
+								<CardActions  sx={{ p:0,}}>
 									<Stack 
 										direction="row"
 										alignItems="center"
 										sx={{ width: "100%" }}
 									>
-										<Button size="medium" variant="link">View</Button>
+										<Button size="medium" variant="link"sx={{ p:0,
+										justifyContent: 'flex-start',}}>View</Button>
 										<Avatar
 											variant="circular"
 											sx={{
@@ -123,7 +127,8 @@ return (
         </Stack>
         <Stack direction="row"
         justifyContent="space-around"
-        sx={{p:3,}}>
+		gap="2rem"
+        sx={{py:3,}}>
         <CardComponent>
 							<CardHeader
 								title={
@@ -136,14 +141,14 @@ return (
 								<Typography variant="body1" color="text.secondary">
                                   Workspace description lorem ipsum dolor sit amet.
 								</Typography>
-								<CardActions>
+								<CardActions  sx={{ p:0,}}>
 									<Stack
 										direction="row"
-										justifyContent="space-between"
 										alignItems="center"
 										sx={{ width: "100%" }}
 									>
-										<Button size="medium" variant="link">View</Button>
+										<Button size="medium" variant="link" sx={{ p:0,
+										justifyContent: 'flex-start',}}>View</Button>
 										<Avatar
 											variant="circular"
 											sx={{
@@ -169,13 +174,14 @@ return (
 								<Typography variant="body1" color="text.secondary">
                                   Workspace description lorem ipsum dolor sit amet.
 								</Typography>
-								<CardActions>
+								<CardActions  sx={{ p:0,}}>
 									<Stack
 										direction="row"
 										alignItems="center"
 										sx={{ width: "100%" }}
 									>
-										<Button size="medium" variant="link">View</Button>
+										<Button size="medium" variant="link" sx={{ p:0,
+										justifyContent: 'flex-start',}}>View</Button>
 										<Avatar
 											variant="circular"
 											sx={{
@@ -201,13 +207,14 @@ return (
 								<Typography variant="body1" color="text.secondary">
                                   Workspace description lorem ipsum dolor sit amet.
 								</Typography>
-								<CardActions>
+								<CardActions  sx={{ p:0,}}>
 									<Stack
 										direction="row"
 										alignItems="center"
 										sx={{ width: "100%" }}
 									>
-										<Button size="medium" variant="link">View</Button>
+										<Button size="medium" variant="link" sx={{ p:0,
+										justifyContent: 'flex-start',}}>View</Button>
 										<Avatar
 											variant="circular"
 											sx={{
