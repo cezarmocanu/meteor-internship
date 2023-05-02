@@ -1,6 +1,6 @@
 import React from "react";
 import { useTheme } from "@mui/material/styles";
-import { Typography, Stack, CardContent, CardHeader,CardActions,Avatar,} from "@mui/material";
+import { Typography, Stack, CardContent, CardHeader,CardActions,Avatar, darken,} from "@mui/material";
 import Button from "../components/shared/button/Button";
 import CardComponent from "../components/shared/card/Card";
 import CardMedia from "../components/shared/card/CardMedia";
@@ -13,7 +13,7 @@ return (
         <Stack direction="row"
         justifyContent="space-between"
         alignItems="center">
-            <Typography variant="h3" gutterBottom>
+            <Typography variant="h3" gutterBottom sx={{color:darken(theme.palette.primary.main, 0.5),}}>
                 Workspaces
             </Typography>
             <Button size="Large" variant="contained">
@@ -27,13 +27,13 @@ return (
         <CardComponent>
 							<CardHeader
 								title={
-									<Typography variant="h5" fontWeight="bold" color="">
-										Workspace 1
+									<Typography variant="h5" fontWeight="bold" sx={{color:darken(theme.palette.primary.main, 0.5),}}>
+										Workspace 18
 									</Typography>
 								}
 							/>
 							<CardContent>
-								<Typography variant="body1" color="text.secondary">
+								<Typography variant="body1" color="text.secondary" minHeight="5rem">
                                   Workspace description lorem ipsum dolor sit amet.
 								</Typography>
 								<CardActions  sx={{ p:0,}}>
@@ -60,13 +60,13 @@ return (
                         <CardComponent>
 							<CardHeader
 								title={
-									<Typography variant="h5" fontWeight="bold" color="">
+									<Typography variant="h5" fontWeight="bold" sx={{color:darken(theme.palette.primary.main, 0.5),}}>
 										Workspace 2
 									</Typography>
 								}
 							/>
 							<CardContent>
-								<Typography variant="body1" color="text.secondary">
+								<Typography variant="body1" color="text.secondary" minHeight="5rem">
                                   Workspace description lorem ipsum dolor sit amet.
 								</Typography>
 								<CardActions sx={{ p:0,}}>
@@ -94,13 +94,13 @@ return (
                         <CardComponent>
 							<CardHeader
 								title={
-									<Typography variant="h5" fontWeight="bold" color="">
-										Workspace 2
+									<Typography variant="h5" fontWeight="bold" sx={{color:darken(theme.palette.primary.main, 0.5),}}>
+										Workspace 3
 									</Typography>
 								}
 							/>
 							<CardContent>
-								<Typography variant="body1" color="text.secondary">
+								<Typography variant="body1" color="text.secondary" minHeight="5rem">
                                   Workspace description lorem ipsum dolor sit amet.
 								</Typography>
 								<CardActions  sx={{ p:0,}}>
@@ -132,13 +132,13 @@ return (
         <CardComponent>
 							<CardHeader
 								title={
-									<Typography variant="h5" fontWeight="bold" color="">
-										Workspace 1
+									<Typography variant="h5" fontWeight="bold" sx={{color:darken(theme.palette.primary.main, 0.5),}}>
+										Workspace 4
 									</Typography>
 								}
 							/>
 							<CardContent>
-								<Typography variant="body1" color="text.secondary">
+								<Typography variant="body1" color="text.secondary" minHeight="5rem">
                                   Workspace description lorem ipsum dolor sit amet.
 								</Typography>
 								<CardActions  sx={{ p:0,}}>
@@ -165,13 +165,13 @@ return (
                         <CardComponent>
 							<CardHeader
 								title={
-									<Typography variant="h5" fontWeight="bold" color="">
-										Workspace 2
+									<Typography variant="h5" fontWeight="bold" sx={{color:darken(theme.palette.primary.main, 0.5),}}>
+										Workspace 5
 									</Typography>
 								}
 							/>
 							<CardContent>
-								<Typography variant="body1" color="text.secondary">
+								<Typography variant="body1" color="text.secondary" minHeight="5rem">
                                   Workspace description lorem ipsum dolor sit amet.
 								</Typography>
 								<CardActions  sx={{ p:0,}}>
@@ -198,13 +198,13 @@ return (
                         <CardComponent>
 							<CardHeader
 								title={
-									<Typography variant="h5" fontWeight="bold" color="">
-										Workspace 2
+									<Typography variant="h5" fontWeight="bold" sx={{color:darken(theme.palette.primary.main, 0.5),}}>
+										Workspace 6
 									</Typography>
 								}
 							/>
 							<CardContent>
-								<Typography variant="body1" color="text.secondary">
+								<Typography variant="body1" color="text.secondary" minHeight="5rem">
                                   Workspace description lorem ipsum dolor sit amet.
 								</Typography>
 								<CardActions  sx={{ p:0,}}>
