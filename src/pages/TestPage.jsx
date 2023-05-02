@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { useTheme } from "@mui/material/styles";
 
 import {
@@ -32,10 +32,16 @@ import PasswordInput from "../components/shared/PasswordInput/PasswordInput";
 import { useDispatch } from "react-redux";
 import { openModal } from "../store/slices/modal-slice";
 import ModalTypes from "../constants/modal-types";
+import workspaceService from "../services/workspace-service";
 
 function Test() {
 	const dispatch = useDispatch();
 	const theme = useTheme();
+
+	useEffect(() => {
+		workspaceService.getWorkspace();
+	}, []);
+
 	return (
 		<Box style={{ backgroundColor: "whitesmoke" }}>
 			<Container>
