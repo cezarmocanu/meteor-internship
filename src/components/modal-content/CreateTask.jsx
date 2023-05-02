@@ -21,15 +21,17 @@ import TextField from "./../shared/input/TextField";
 import DatePicker from "./../shared/date-picker/DatePicker";
 import { closeModal } from "../../store/slices/modal-slice";
 
+const OPTIONS = [
+	{ label: "Low", id: 1 },
+	{ label: "Medium", id: 2 },
+	{ label: "High", id: 3 },
+];
+
 function CreateTask() {
 	const [select, setSelect] = useState("");
 	const dispatch = useDispatch();
 	const theme = useTheme();
-	const OPTIONS = [
-		{ label: "Low", id: 1 },
-		{ label: "Medium", id: 2 },
-		{ label: "High", id: 3 },
-	];
+
 	const handleChangeSelect = (event) => {
 		setSelect(event.target.value);
 	};
