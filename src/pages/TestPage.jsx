@@ -51,6 +51,14 @@ function Test() {
 				>
 					Open modal test 2
 				</Button>
+
+				<Button
+					variant="contained"
+					onClick={() => dispatch(openModal(ModalTypes.LOGOUT))}
+				>
+					Logout Modal
+				</Button>
+
 				<Button
 					variant="contained"
 					onClick={() => dispatch(openModal(ModalTypes.CREATE_TASK))}
