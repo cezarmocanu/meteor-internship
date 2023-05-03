@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTheme } from "@mui/material/styles";
 
 
@@ -33,7 +33,11 @@ import PasswordInput from "../components/shared/PasswordInput/PasswordInput";
 import { useDispatch } from "react-redux";
 import { openModal } from "../store/slices/modal-slice";
 import ModalTypes from "../constants/modal-types";
+import taskService from "../services/tasks-service";
 
+useEffect(function () {
+	taskService.getTasks(workspaceId);
+}, []);
 function Test() {
 	const dispatch = useDispatch();
 	const theme = useTheme();

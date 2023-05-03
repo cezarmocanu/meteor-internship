@@ -5,7 +5,7 @@ const getTasks = async (workspaceId) => {
 	if (!token) {
 		return [];
 	}
-	const response = await fetch(ENDPOINTS.TASKS.GET_TASKS(workspaceId), {
+	const response = await fetch(ENDPOINTS.ALL_TASKS.GET_TASKS(workspaceId), {
 		headers: {
 			Authorization: `Bearer ${token}`,
 		},
