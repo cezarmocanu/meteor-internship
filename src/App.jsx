@@ -22,6 +22,10 @@ import KeepMountedModal from "./components/modal-content/LogOutModal";
 
 =======
 import Layout from "./components/Layout";
+<<<<<<< HEAD
+>>>>>>> main
+=======
+import CreateTask from "./components/modal-content/CreateTask";
 >>>>>>> main
 
 function App() {
@@ -86,9 +90,10 @@ function App() {
 				</Routes>
 			</BrowserRouter>
 
-			<Dialog open={modalState ?? false} onClose={() => dispatch(closeModal())}>
+			<Dialog open={Boolean(modalState)} onClose={() => dispatch(closeModal())}>
 				{modalState === ModalTypes.TEST && <TestContent1 />}
 				{modalState === ModalTypes.TEST2 && <TestContent2 />}
+				{modalState === ModalTypes.CREATE_TASK && <CreateTask />}
 			</Dialog>
 		</>
 	);
