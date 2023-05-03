@@ -11,9 +11,8 @@ import {
 } from "@mui/material";
 import Button from "../components/shared/button/Button";
 import CardComponent from "../components/shared/card/Card";
-import CardMedia from "../components/shared/card/CardMedia";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-function WorkspaceMockPage() {
+function WorkspacesCardsPage() {
 	const theme = useTheme();
 	return (
 		<Stack sx={{ p: 5 }}>
@@ -274,4 +273,4 @@ function WorkspaceMockPage() {
 		</Stack>
 	);
 }
-export default WorkspaceMockPage;
+export default WorkspacesCardsPage;

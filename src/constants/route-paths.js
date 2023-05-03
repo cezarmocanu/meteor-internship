@@ -8,7 +8,7 @@ const RoutePaths = {
 	WORKSPACE: "/workspace",
 	AUTH: "/auth",
 	PRIVATE: "/private",
-	WORKSPACES_MOCK: "/workspaces-mock"
+	WORKSPACES: "/workspaces"
 };
 
 export default RoutePaths;
