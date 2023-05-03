@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useTheme } from "@mui/material/styles";
 
-
 import {
 	Container,
 	Typography,
@@ -33,8 +32,6 @@ import PasswordInput from "../components/shared/PasswordInput/PasswordInput";
 import { useDispatch } from "react-redux";
 import { openModal } from "../store/slices/modal-slice";
 import ModalTypes from "../constants/modal-types";
-
-
 
 function Test() {
 	const dispatch = useDispatch();
