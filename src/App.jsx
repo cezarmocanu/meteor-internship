@@ -18,6 +18,7 @@ import ModalTypes from "./constants/modal-types";
 import TestContent1 from "./components/modal-content/TestContent1";
 import TestContent2 from "./components/modal-content/TestContent2";
 import Layout from "./components/Layout";
+import DeleteModalContent from "./components/modal-content/DeleteModalContent";
 
 function App() {
 	const dispatch = useDispatch();
@@ -84,6 +85,7 @@ function App() {
 			<Dialog open={modalState ?? false} onClose={() => dispatch(closeModal())}>
 				{modalState === ModalTypes.TEST && <TestContent1 />}
 				{modalState === ModalTypes.TEST2 && <TestContent2 />}
+				{modalState === ModalTypes.DELETE_TASK && <DeleteModalContent/>}
 			</Dialog>
 		</>
 	);

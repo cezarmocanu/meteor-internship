@@ -40,17 +40,14 @@ function Test() {
 	return (
 		<Box style={{ backgroundColor: "whitesmoke" }}>
 			<Container>
-				<Stack>
-				<DeleteModalContent onClick={() => <DeleteModalContent
-  open={open}
-  onClose={handleClose}
-  onConfirm={handleDelete}
-  title="Confirm deletion"
-  body="Are you sure you want to delete this content?"
-/>}>
-	
-</DeleteModalContent>
-				</Stack>
+				
+			<Button
+					variant="contained"
+					onClick={() => dispatch(openModal(ModalTypes.DELETE_TASK))}
+				>
+					DeleteModalContent
+				</Button>
+				
 				<Button
 					variant="contained"
 					onClick={() => dispatch(openModal(ModalTypes.TEST))}

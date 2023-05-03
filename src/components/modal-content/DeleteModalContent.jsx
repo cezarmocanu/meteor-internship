@@ -1,57 +1,43 @@
-import React, { useState } from 'react'
-import Button from '@mui/material/Button';
-import { Stack, Box, Typography  } from '@mui/material';
-import Modal from '@mui/material/Modal';
+import React from "react";
+import Stack from '@mui/material/Stack';
 import CloseIcon from '@mui/icons-material/Close';
+import Typography from '@mui/material/Typography';
+import Theme from "../../theme";
+import { useDispatch } from "react-redux";
+import { closeModal } from "../../store/slices/modal-slice";
+import {
+    DialogTitle,
+    DialogContent,
+    DialogContentText,
+    DialogActions,
+    Button,
+} from "@mui/material";
 
+function DeleteModalContent() {
+    const dispatch = useDispatch();
 
+    return (
+        <>
+        <Stack direction="row" sx={{width: '100%',
+    justifyContent: "space-between"}}>
 
-const DeleteModalContent = (props) => {
-  const {onConfirm, onClose} = props;
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
-  
-/*dasad */
-
-  
-
-  return (
-    <div>
-      <Button onClick={handleOpen}>Delete Modal Content</Button>
-      <Modal sx={style}
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Stack sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-           Delete Task
-          </Typography>
-          <Button><CloseIcon/></Button>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }} variant="subtitle1">
-            Are you sure you want to delete the task "x,y,,z"? This taskis in-progress
-          </Typography>
-          <Button onClick={onConfirm} variant="contained">NO</Button>
-          <Button onClick={onClose} variant="contained">YES</Button>
-          
+            <DialogTitle variant="h2">Delete task</DialogTitle>
+        <CloseIcon onClick={() => dispatch(closeModal())}></CloseIcon>
         </Stack>
-      </Modal>
-    </div>
-  );
-}
 
-export default DeleteModalContent
+            <DialogContent>
+                <DialogContentText>
+                    Are you sure you delete the task? This task is in-progress?
+                </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+                <Button color="primary" variant="contained" size="large"onClick={() => dispatch(closeModal())}>No</Button>
+
+                <Button sx={{
+                        backgroundColor: Theme.palette.info.light,
+                    }} color="error" variant="contained" size="large" onClick={() => dispatch(closeModal())}>Yes</Button>
+            </DialogActions>
+        </>
+    );
+}
+export default DeleteModalContent;
