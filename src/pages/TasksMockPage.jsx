@@ -1,24 +1,23 @@
 import React, { useState } from "react";
-
 import {
-	Container,
-	Typography,
+	Avatar,
 	Box,
+	CardActions,
 	CardContent,
+	CardHeader,
+	Container,
 	Grid,
 	Stack,
-	CardActions,
-	CardHeader,
-	Avatar,
+	Tab,
+	Tabs,
+	Typography,
 } from "@mui/material";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 import Button from "../components/shared/button/Button";
-import Chip from "../components/shared/chip/Chip";
 import CardComponent from "../components/shared/card/Card";
-import theme from "../theme";
+import Chip from "../components/shared/chip/Chip";
 import TaskStatus from "../constants/task-status";
 import { STATUS_CARD_CONFIG } from "../components/TaskDetailsCard";
+import theme from "../theme";
 
 const LocalCardComponent = ({
 	title,
@@ -47,7 +46,6 @@ const LocalCardComponent = ({
 						</div>
 					}
 				/>
-
 				<CardContent>
 					<Typography variant="h6" fontWeight="bold">
 						{content}
