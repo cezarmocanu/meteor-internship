@@ -12,7 +12,7 @@ import FormLabel from "../components/shared/input/FormLabel";
 import TextField from "../components/shared/input/TextField";
 import authService from "../services/auth-service";
 import RoutePaths from "../constants/route-paths";
-import PasswordInput from "../components/shared/PasswordInput/PasswordInput";
+import PasswordInput from "../components/shared/password-input/PasswordInput"
 
 function LoginPage() {
 	const theme = useTheme();
