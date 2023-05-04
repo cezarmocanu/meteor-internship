@@ -6,11 +6,21 @@ import Button from "../components/shared/button/Button";
 import FormLabel from "../components/shared/input/FormLabel";
 import TextField from "../components/shared/input/TextField";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import { useFormik } from "formik";
 
 function SignUpPage() {
 	const theme = useTheme();
 
-	const [account, setAccount] = useState({
+	const formik = useFormik({
+		initialValues: {
+			firstName: "",
+			lastName: "",
+			email: "",
+			password: "",
+		},
+	});
+
+	/* const [account, setAccount] = useState({
 		firstName: "",
 		lastName: "",
 		email: "",
@@ -26,7 +36,7 @@ function SignUpPage() {
 
 	const onCreateAccount = (e) => {
 		console.log("Account Data:", account);
-	};
+	}; */
 	return (
 		<Stack sx={{ width: "100%", height: "100vh" }}>
 			<Stack sx={{ height: "100%" }} direction={"row"}>
@@ -86,7 +96,8 @@ function SignUpPage() {
 								<FormLabel>First Name</FormLabel>
 								<TextField
 									name="firstName"
-									onChange={onTextFieldChange}
+									onChange={formik.handleChange}
+									value={formik.values.firstName}
 									required
 									variant="outlined"
 									size="small"
@@ -94,7 +105,8 @@ function SignUpPage() {
 								<FormLabel>Last Name</FormLabel>
 								<TextField
 									name="lastName"
-									onChange={onTextFieldChange}
+									onChange={formik.handleChange}
+									value={formik.values.lastName}
 									required
 									variant="outlined"
 									size="small"
@@ -102,7 +114,8 @@ function SignUpPage() {
 								<FormLabel>Email Address</FormLabel>
 								<TextField
 									name="email"
-									onChange={onTextFieldChange}
+									onChange={formik.handleChange}
+									value={formik.values.email}
 									required
 									variant="outlined"
 									helperText="Example. mano@gmail.com"
@@ -111,7 +124,8 @@ function SignUpPage() {
 								<FormLabel>Enter A Password</FormLabel>
 								<TextField
 									name="password"
-									onChange={onTextFieldChange}
+									onChange={formik.handleChange}
+									value={formik.values.password}
 									InputProps={{
 										endAdornment: (
 											<InputAdornment position="end">
