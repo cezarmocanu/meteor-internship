@@ -4,11 +4,10 @@ import { useTheme } from "@mui/material/styles";
 import { Stack, InputAdornment, IconButton } from "@mui/material";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
-import FormLabel from "../../shared/input/FormLabel";
-import TextField from "../../shared/input/TextField";
+import FormLabel from "../input/FormLabel";
+import TextField from "../input/TextField";
 
 function PasswordInput() {
-	const theme = useTheme();
 	const [showPassword, setShowPassword] = useState(false);
 	const handleClickShowPassword = () => setShowPassword((show) => !show);
 
