@@ -114,23 +114,29 @@ const TaskDetailsCard = ({
 							{buttonText}
 						</Button>
 						<Button
-							size="large"
+							size="link"
 							onClick={() => setIsDeleteModalOpen(true)}
 							sx={{
 								color: Theme.palette.info.secondary,
 								backgroundColor: Theme.palette.info.light,
 								borderRadius: "0.5rem",
+								p:1.5,
+								minHeight:0,
+								minWidth:0,
 							}}
 						>
 							<DeleteOutlined />
 						</Button>
 
 						<Button
-							size="large"
+							size="link"
 							sx={{
 								color: Theme.palette.info.light3,
 								backgroundColor: Theme.palette.info.light2,
 								borderRadius: "0.5rem",
+								p:1.5,
+								minHeight:0,
+								minWidth:0,
 							}}
 						>
 							<EditIcon />
