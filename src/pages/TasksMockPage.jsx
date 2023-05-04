@@ -36,7 +36,6 @@ const LocalCardComponent = ({
 							<Typography variant="body1" color="text.secondary">
 								T-{id}
 							</Typography>
-
 							<Chip
 								color={STATUS_CARD_CONFIG[status].chipColor}
 								variant="outlined"
@@ -107,7 +106,6 @@ const TasksMockPage = () => {
 	const handleChange = (event, newValue) => {
 		console.log("newValue", newValue);
 		setTabIndex(newValue);
-
 		switch (newValue) {
 			case 0:
 				setStatus(null);
