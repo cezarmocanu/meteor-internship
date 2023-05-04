@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import WorkspacePage from "./pages/WorkspacePage";
 import AuthenticationPage from "./pages/AuthenticationPage";
 import PrivatePage from "./pages/PrivatePage";
+import WorkspacesCardsPage from "./pages/WorkspacesCardsPage";
 import { login } from "./store/slices/authentication-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectModal, closeModal } from "./store/slices/modal-slice";
@@ -78,6 +79,14 @@ function App() {
 					<Route
 						path={RoutePaths.CHANGE_PASSWORD}
 						element={<ChangePasswordPage />}
+					/>
+					<Route
+						path={RoutePaths.WORKSPACES}
+						element={
+							<Layout>
+								<WorkspacesCardsPage />
+							</Layout>
+						}
 					/>
 				</Routes>
 			</BrowserRouter>

@@ -8,6 +8,7 @@ const RoutePaths = {
 	WORKSPACE: "/workspace",
 	AUTH: "/auth",
 	PRIVATE: "/private",
+	WORKSPACES: "/workspaces"
 };
 
 export default RoutePaths;
