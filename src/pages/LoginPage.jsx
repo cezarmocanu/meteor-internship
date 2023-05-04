@@ -1,8 +1,7 @@
 import React from "react";
-import { Typography, Stack, Box, InputAdornment } from "@mui/material";
+import { Typography, Stack, Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
-import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
@@ -12,7 +11,7 @@ import FormLabel from "../components/shared/input/FormLabel";
 import TextField from "../components/shared/input/TextField";
 import authService from "../services/auth-service";
 import RoutePaths from "../constants/route-paths";
-import PasswordInput from "../components/shared/PasswordInput/PasswordInput";
+import PasswordInput from "../components/shared/password-input/PasswordInput";
 
 function LoginPage() {
 	const theme = useTheme();
