@@ -12,6 +12,7 @@ import FormLabel from "../components/shared/input/FormLabel";
 import TextField from "../components/shared/input/TextField";
 import authService from "../services/auth-service";
 import RoutePaths from "../constants/route-paths";
+import PasswordInput from "../components/shared/PasswordInput/PasswordInput";
 
 function LoginPage() {
 	const theme = useTheme();
@@ -56,20 +57,10 @@ function LoginPage() {
 									helperText="Example. mano@gmail.com"
 								/>
 							</Stack>
-							<FormLabel>Enter your Password</FormLabel>
-							<TextField
-								InputProps={{
-									endAdornment: (
-										<InputAdornment position="end">
-											<VisibilityOutlinedIcon />
-										</InputAdornment>
-									),
-								}}
-								type="password"
-								required
-								variant="outlined"
-								helperText="Upto 8 characters with an Uppercase, symbol and number"
-							/>
+							<Stack>
+								<FormLabel>Enter your Password</FormLabel>
+								<PasswordInput />
+							</Stack>
 							<FormControlLabel
 								control={<Checkbox checked={false} />}
 								label={<Typography fontWeight="bold"> Remember me</Typography>}
