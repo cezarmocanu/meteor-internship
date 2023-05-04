@@ -37,7 +37,6 @@ const TasksMockPage = () => {
 	const [tabIndex, setTabIndex] = useState(0);
 	const [status, setStatus] = useState(null);
 	const handleChange = (event, newValue) => {
-		console.log("newValue", newValue);
 		setTabIndex(newValue);
 		switch (newValue) {
 			case 0:
