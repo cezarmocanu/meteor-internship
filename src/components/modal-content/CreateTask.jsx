@@ -56,9 +56,7 @@ function CreateTask() {
 						<CloseIcon />
 					</IconButton>
 				</DialogActions>
-				<DialogTitle variant="h5" fontWeight="bold" sx={{ paddingTop: 0 }}>
-					Create Task
-				</DialogTitle>
+				<DialogTitle sx={{ paddingTop: 0 }}>Create Task</DialogTitle>
 				<DialogContent>
 					<Stack gap={2}>
 						<Stack gap={1}>
