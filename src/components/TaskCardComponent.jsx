@@ -48,7 +48,12 @@ const TaskCardComponent = ({
 					}
 				/>
 				<CardContent>
-					<Typography variant="h6" fontWeight="bold">
+					<Typography
+						variant="body1"
+						fontWeight="bold"
+						marginBottom={1}
+						marginLeft={1}
+					>
 						{content}
 					</Typography>
 					<CardActions>
