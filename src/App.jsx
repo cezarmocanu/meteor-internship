@@ -21,7 +21,7 @@ import TestContent2 from "./components/modal-content/TestContent2";
 import Layout from "./components/Layout";
 import CreateTask from "./components/modal-content/CreateTask";
 import LogoutModal from "./components/modal-content/LogoutModal";
-import DeleteModalContent from "./components/modal-content/DeleteModalContent";
+import DeleteTaskModalContent from "./components/modal-content/DeleteTaskModalContent";
 
 function App() {
 	const dispatch = useDispatch();
@@ -106,7 +106,7 @@ function App() {
 				{modalState === ModalTypes.TEST2 && <TestContent2 />}
 				{modalState === ModalTypes.CREATE_TASK && <CreateTask />}
 				{modalState === ModalTypes.LOGOUT && <LogoutModal />}
-				{modalState === ModalTypes.DELETE_TASK && <DeleteModalContent />}
+				{modalState === ModalTypes.DELETE_TASK && <DeleteTaskModalContent />}
 			</Dialog>
 		</>
 	);

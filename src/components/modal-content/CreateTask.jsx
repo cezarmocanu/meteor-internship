@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import { useDispatch } from "react-redux";
-//import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import {
 	DialogTitle,
@@ -56,9 +56,7 @@ function CreateTask() {
 						<CloseIcon />
 					</IconButton>
 				</DialogActions>
-				<DialogTitle variant="h5" fontWeight="bold" sx={{ paddingTop: 0 }}>
-					Create Task
-				</DialogTitle>
+				<DialogTitle sx={{ paddingTop: 0 }}>Create Task</DialogTitle>
 				<DialogContent>
 					<Stack gap={2}>
 						<Stack gap={1}>
