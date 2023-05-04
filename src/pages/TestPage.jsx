@@ -52,6 +52,13 @@ function Test() {
 			<Container>
 				<Button
 					variant="contained"
+					onClick={() => dispatch(openModal(ModalTypes.DELETE_TASK))}
+				>
+					DeleteModalContent
+				</Button>
+
+				<Button
+					variant="contained"
 					color="primary"
 					size="large"
 					onClick={handleLogoutClick}

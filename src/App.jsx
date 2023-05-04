@@ -20,6 +20,7 @@ import TestContent1 from "./components/modal-content/TestContent1";
 import TestContent2 from "./components/modal-content/TestContent2";
 import Layout from "./components/Layout";
 import CreateTask from "./components/modal-content/CreateTask";
+import DeleteModalContent from "./components/modal-content/DeleteModalContent";
 
 function App() {
 	const dispatch = useDispatch();
@@ -95,6 +96,7 @@ function App() {
 				{modalState === ModalTypes.TEST && <TestContent1 />}
 				{modalState === ModalTypes.TEST2 && <TestContent2 />}
 				{modalState === ModalTypes.CREATE_TASK && <CreateTask />}
+				{modalState === ModalTypes.DELETE_TASK && <DeleteModalContent />}
 			</Dialog>
 		</>
 	);
