@@ -14,9 +14,8 @@ const login = async (username, password) => {
 	localStorage.setItem("token", data.token);
 };
 
-const token = localStorage.getItem("token");
-
 const logout = async () => {
+	const token = localStorage.getItem("token");
 	const response = await fetch(ENDPOINTS.AUTH.LOGOUT, {
 		method: "POST",
 		headers: {
@@ -26,7 +25,6 @@ const logout = async () => {
 
 	const data = await response.json();
 	localStorage.removeItem("token");
-	console.log("logout", data);
 };
 
 const authService = {
