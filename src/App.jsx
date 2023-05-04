@@ -18,7 +18,6 @@ import ModalTypes from "./constants/modal-types";
 import TestContent1 from "./components/modal-content/TestContent1";
 import TestContent2 from "./components/modal-content/TestContent2";
 import Layout from "./components/Layout";
-import TasksMockPage from "./pages/TasksMockPage";
 import CreateTask from "./components/modal-content/CreateTask";
 
 function App() {
@@ -64,7 +63,7 @@ function App() {
 						path={RoutePaths.TASKS}
 						element={
 							<Layout>
-								<TasksMockPage />
+								<TasksPage />
 							</Layout>
 						}
 					/>
