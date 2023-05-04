@@ -11,7 +11,7 @@ import Button from "../components/shared/button/Button";
 import Card from "../components/shared/card/Card";
 import TaskTimeline from "../components/TaskTimeline";
 
-const STATUS_CARD_CONFIG = {
+export const STATUS_CARD_CONFIG = {
 	[TaskStatus.PENDING]: {
 		chipLabel: "Pending",
 		chipColor: "warning",

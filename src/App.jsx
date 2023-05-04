@@ -62,6 +62,14 @@ function App() {
 						}
 					/>
 					<Route
+						path={RoutePaths.TASKS}
+						element={
+							<Layout>
+								<TasksPage />
+							</Layout>
+						}
+					/>
+					<Route
 						exact
 						path={RoutePaths.ROOT}
 						element={
