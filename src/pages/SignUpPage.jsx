@@ -18,7 +18,12 @@ function SignUpPage() {
 			email: "",
 			password: "",
 		},
+		onSubmit: (values) => {
+			console.log("from button", formik.values);
+		},
 	});
+
+	/* console.log("form values", formik.values); */
 
 	/* const [account, setAccount] = useState({
 		firstName: "",
@@ -141,7 +146,7 @@ function SignUpPage() {
 								/>
 							</Stack>
 							<Button
-								onClick={onCreateAccount}
+								onSubmit={formik.handleSubmit}
 								variant="contained"
 								color="primary"
 								size="large"
