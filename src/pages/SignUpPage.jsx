@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Typography, Stack, Box, InputAdornment } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import ContainedImage from "../components/ContainedImage";
@@ -9,6 +9,24 @@ import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 
 function SignUpPage() {
 	const theme = useTheme();
+
+	const [account, setAccount] = useState({
+		firstName: "",
+		lastName: "",
+		email: "",
+		password: "",
+	});
+
+	const onTextFieldChange = (e) => {
+		setAccount((prevState) => ({
+			...prevState,
+			[e.target.name]: e.target.value,
+		}));
+	};
+
+	const onCreateAccount = (e) => {
+		console.log("Account Data:", account);
+	};
 	return (
 		<Stack sx={{ width: "100%", height: "100vh" }}>
 			<Stack sx={{ height: "100%" }} direction={"row"}>
@@ -66,11 +84,25 @@ function SignUpPage() {
 							</Stack>
 							<Stack>
 								<FormLabel>First Name</FormLabel>
-								<TextField required variant="outlined" size="small" />
+								<TextField
+									name="firstName"
+									onChange={onTextFieldChange}
+									required
+									variant="outlined"
+									size="small"
+								/>
 								<FormLabel>Last Name</FormLabel>
-								<TextField required variant="outlined" size="small" />
+								<TextField
+									name="lastName"
+									onChange={onTextFieldChange}
+									required
+									variant="outlined"
+									size="small"
+								/>
 								<FormLabel>Email Address</FormLabel>
 								<TextField
+									name="email"
+									onChange={onTextFieldChange}
 									required
 									variant="outlined"
 									helperText="Example. mano@gmail.com"
@@ -78,6 +110,8 @@ function SignUpPage() {
 								/>
 								<FormLabel>Enter A Password</FormLabel>
 								<TextField
+									name="password"
+									onChange={onTextFieldChange}
 									InputProps={{
 										endAdornment: (
 											<InputAdornment position="end">
@@ -92,7 +126,12 @@ function SignUpPage() {
 									size="small"
 								/>
 							</Stack>
-							<Button variant="contained" color="primary" size="large">
+							<Button
+								onClick={onCreateAccount}
+								variant="contained"
+								color="primary"
+								size="large"
+							>
 								Create account
 							</Button>
 						</Stack>

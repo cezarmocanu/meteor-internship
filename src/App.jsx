@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import WorkspacePage from "./pages/WorkspacePage";
 import AuthenticationPage from "./pages/AuthenticationPage";
 import PrivatePage from "./pages/PrivatePage";
+import WorkspacesCardsPage from "./pages/WorkspacesCardsPage";
 import { login } from "./store/slices/authentication-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectModal, closeModal } from "./store/slices/modal-slice";
@@ -20,6 +21,8 @@ import TestContent2 from "./components/modal-content/TestContent2";
 import Layout from "./components/Layout";
 import CreateTask from "./components/modal-content/CreateTask";
 import LogoutModal from "./components/modal-content/LogoutModal";
+import DeleteModalContent from "./components/modal-content/DeleteModalContent";
+
 function App() {
 	const dispatch = useDispatch();
 	const modalState = useSelector(selectModal);
@@ -60,6 +63,14 @@ function App() {
 						}
 					/>
 					<Route
+						path={RoutePaths.TASKS}
+						element={
+							<Layout>
+								<TasksPage />
+							</Layout>
+						}
+					/>
+					<Route
 						exact
 						path={RoutePaths.ROOT}
 						element={
@@ -79,6 +90,14 @@ function App() {
 						path={RoutePaths.CHANGE_PASSWORD}
 						element={<ChangePasswordPage />}
 					/>
+					<Route
+						path={RoutePaths.WORKSPACES}
+						element={
+							<Layout>
+								<WorkspacesCardsPage />
+							</Layout>
+						}
+					/>
 				</Routes>
 			</BrowserRouter>
 
@@ -87,6 +106,7 @@ function App() {
 				{modalState === ModalTypes.TEST2 && <TestContent2 />}
 				{modalState === ModalTypes.CREATE_TASK && <CreateTask />}
 				{modalState === ModalTypes.LOGOUT && <LogoutModal />}
+				{modalState === ModalTypes.DELETE_TASK && <DeleteModalContent />}
 			</Dialog>
 		</>
 	);
