@@ -14,7 +14,7 @@ function LogoutModal() {
 
 	return (
 		<>
-			<DialogTitle>Test Content 1</DialogTitle>
+			<DialogTitle>Are you sure you want to logout?</DialogTitle>
 			<DialogContent>
 				<DialogContentText>
 					Let Google help apps determine location. This means sending anonymous
@@ -22,7 +22,20 @@ function LogoutModal() {
 				</DialogContentText>
 			</DialogContent>
 			<DialogActions>
-				<Button onClick={() => dispatch(closeModal())}>Disagree</Button>
+				<Button
+					variant="contained"
+					color="primary"
+					onClick={() => dispatch(closeModal())}
+				>
+					Cancel
+				</Button>
+				<Button
+					variant="contained"
+					color="secondary"
+					onClick={() => dispatch(closeModal())}
+				>
+					Logout
+				</Button>
 			</DialogActions>
 		</>
 	);
