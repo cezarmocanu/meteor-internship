@@ -3,5 +3,7 @@ const API = `${HOST}/api`;
 export const ENDPOINTS = {
 	AUTH: {
 		LOGIN: `${API}/v1/auth/login`,
+		LOGOUT: `${API}/v1/auth/logout`
 	},
 };
+
