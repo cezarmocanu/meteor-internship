@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Typography, Stack, Box, InputAdornment } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import ContainedImage from "../components/ContainedImage";
@@ -23,25 +23,6 @@ function SignUpPage() {
 		},
 	});
 
-	/* console.log("form values", formik.values); */
-
-	/* const [account, setAccount] = useState({
-		firstName: "",
-		lastName: "",
-		email: "",
-		password: "",
-	});
-
-	const onTextFieldChange = (e) => {
-		setAccount((prevState) => ({
-			...prevState,
-			[e.target.name]: e.target.value,
-		}));
-	};
-
-	const onCreateAccount = (e) => {
-		console.log("Account Data:", account);
-	}; */
 	return (
 		<Stack sx={{ width: "100%", height: "100vh" }}>
 			<Stack sx={{ height: "100%" }} direction={"row"}>
@@ -146,7 +127,8 @@ function SignUpPage() {
 								/>
 							</Stack>
 							<Button
-								onSubmit={formik.handleSubmit}
+								onClick={formik.handleSubmit}
+								type="submit"
 								variant="contained"
 								color="primary"
 								size="large"
