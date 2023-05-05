@@ -3,22 +3,28 @@ import { createSlice } from "@reduxjs/toolkit";
 const authenticationSlice = createSlice({
 	name: "authentication",
 	initialState: {
-		isAuthenticated: false,
+		isAuthenticationInitialized: false,
+		isAuthenticated: null,
 	},
 	reducers: {
-		login(state, action) {
+		initializeAuth(state, _) {
+			const token = localStorage.getItem("token");
+			state.isAuthenticated = Boolean(token);
+			state.isAuthenticationInitialized = true;
+			return state;
+		},
+		login(state, _) {
 			state.isAuthenticated = true;
 			return state;
 		},
-		logout(state, action) {
+		logout(state, _) {
 			state.isAuthenticated = false;
-			localStorage.removeItem("token");
 			return state;
 		},
 	},
 });
 
-export const { login, logout } = authenticationSlice.actions;
+export const { login, logout, initializeAuth } = authenticationSlice.actions;
 
 export const selectAuthentication = (state) => state.authentication;
 
