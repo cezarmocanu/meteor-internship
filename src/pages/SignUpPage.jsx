@@ -7,20 +7,43 @@ import FormLabel from "../components/shared/input/FormLabel";
 import TextField from "../components/shared/input/TextField";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import { useFormik } from "formik";
+import * as yup from "yup";
+
+const initialValues = {
+	firstName: "",
+	lastName: "",
+	email: "",
+	password: "",
+};
+
+const validationSchema = yup.object({
+	firstName: yup
+		.string("Enter your first name")
+		.required("First name is required"),
+	lastName: yup
+		.string("Enter your last name")
+		.required("Last name is required"),
+	email: yup
+		.string("Enter your email")
+		.email("Enter a valid email")
+		.required("Email is required"),
+	password: yup
+		.string("Enter your password")
+		.min(8, "Password should be of minimum 8 characters length")
+		.required("Password is required"),
+});
+
+const onSubmit = (values) => {
+	console.log("from button", formik.values);
+};
 
 function SignUpPage() {
 	const theme = useTheme();
 
 	const formik = useFormik({
-		initialValues: {
-			firstName: "",
-			lastName: "",
-			email: "",
-			password: "",
-		},
-		onSubmit: (values) => {
-			console.log("from button", formik.values);
-		},
+		initialValues: initialValues,
+		validationSchema: validationSchema,
+		onSubmit: onSubmit,
 	});
 
 	return (
@@ -84,6 +107,12 @@ function SignUpPage() {
 									name="firstName"
 									onChange={formik.handleChange}
 									value={formik.values.firstName}
+									error={
+										formik.touched.firstName && Boolean(formik.errors.firstName)
+									}
+									helperText={
+										formik.touched.firstName && formik.errors.firstName
+									}
 									required
 									variant="outlined"
 									size="small"
@@ -93,7 +122,10 @@ function SignUpPage() {
 									name="lastName"
 									onChange={formik.handleChange}
 									value={formik.values.lastName}
-									required
+									error={
+										formik.touched.lastName && Boolean(formik.errors.lastName)
+									}
+									helperText={formik.touched.lastName && formik.errors.lastName}
 									variant="outlined"
 									size="small"
 								/>
@@ -102,9 +134,9 @@ function SignUpPage() {
 									name="email"
 									onChange={formik.handleChange}
 									value={formik.values.email}
-									required
+									error={formik.touched.email && Boolean(formik.errors.email)}
+									helperText={formik.touched.email && formik.errors.email}
 									variant="outlined"
-									helperText="Example. mano@gmail.com"
 									size="small"
 								/>
 								<FormLabel>Enter A Password</FormLabel>
@@ -112,6 +144,10 @@ function SignUpPage() {
 									name="password"
 									onChange={formik.handleChange}
 									value={formik.values.password}
+									error={
+										formik.touched.password && Boolean(formik.errors.password)
+									}
+									helperText={formik.touched.password && formik.errors.password}
 									InputProps={{
 										endAdornment: (
 											<InputAdornment position="end">
@@ -120,9 +156,7 @@ function SignUpPage() {
 										),
 									}}
 									type="password"
-									required
 									variant="outlined"
-									helperText="Upto 8 characters with an Uppercase, symbol and number"
 									size="small"
 								/>
 							</Stack>
