@@ -1,12 +1,9 @@
 import React from "react";
-import {
-	Typography,
-	InputAdornment,
-} from "@mui/material";
+import { Typography, InputAdornment } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 import Button from "../components/shared/button/Button";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-import BackgroundImage from "../../public/city-background.svg";
+import BackgroundImage from "../../src/assets/images/city-background.svg";
 import TextField from "../components/shared/input/TextField";
 import FormLabel from "../components/shared/input/FormLabel";
 
@@ -43,10 +40,11 @@ function ChangePasswordPage() {
 					control of your account
 				</Typography>
 				<Stack
-				sx={{
-					width: "20rem",
-					 maxWidth: '100%',
-				  }}>
+					sx={{
+						width: "20rem",
+						maxWidth: "100%",
+					}}
+				>
 					<FormLabel>Password</FormLabel>
 					<TextField
 						InputProps={{
@@ -62,10 +60,12 @@ function ChangePasswordPage() {
 						variant="outlined"
 					/>
 				</Stack>
-				<Stack  sx={{
-      				  width: "20rem",
-       				  maxWidth: '100%',
-    				  }}>
+				<Stack
+					sx={{
+						width: "20rem",
+						maxWidth: "100%",
+					}}
+				>
 					<FormLabel>Confirm Password</FormLabel>
 					<TextField
 						InputProps={{
