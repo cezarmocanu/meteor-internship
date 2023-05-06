@@ -2,11 +2,8 @@ import { Container, Box, Button } from "@mui/material";
 import widget from "./widget.png";
 import ContainedImage from "../ContainedImage";
 
-function NoTasksPlaceholder() {
-	const onCreateTaskClick = (e) => {
-		e.preventDefault();
-		console.log("The button was clicked!");
-	};
+function NoTasksPlaceholder({onCreateTaskClick}) {
+		//console.log("The button was clicked!");
 	return (
 		<Container
 			sx={{
