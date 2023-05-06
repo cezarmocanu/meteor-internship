@@ -1,49 +1,70 @@
-import { alignProperty } from "@mui/material/styles/cssUtils";
-import wid from "./wid.png";
-import { Button } from "@mui/material";
-import { useState } from "react";
+import { Container, Box, Button } from "@mui/material";
+import widget from "./widget.png";
+import ContainedImage from "../ContainedImage";
 
 function NoTasksPlaceholder() {
-	const [count, setCount] = useState(0);
-	const onCreateTaskClick = () => {
-		setTask(count + 1);
+	const onCreateTaskClick = (e) => {
+		e.preventDefault();
+		console.log("The button was clicked!");
 	};
 	return (
-		<div
-			style={{
-				fontFamily: "Gelion",
-				textAlign: "center",
-				backgroundColor: "#E5E5E5",
-				width: "30%",
-				margin: "auto",
+		<Container
+			sx={{
 				boxSizing: "border-box",
+				display: "flex",
+				textAlign: "center",
+				flexDirection: "column",
+				alignItems: "center",
+				alignContent: "center",
+				justifyContent: "center",
+				width: "100vw",
+				height: "100vh",
+				margin: "auto",
 			}}
 		>
-			<img style={{ width: "50%" }} src={wid} alt="widget image" />
-			<div style={{ padding: 10 }}>
-				<h1
-					style={{
-						fontFamily: "sans-serif",
-						flexShrink: 1,
-						fontSize: 28,
-						fontWeight: 600,
-						fontStyle: "normal",
-						letterSpacing: -1,
-					}}
-				>
-					No Tasks Yet
-				</h1>
+			<ContainedImage src={widget} width={170} height={140} />
+
+			<Box
+				sx={{
+					fontSize: 15,
+					fontWeight: 600,
+					opacity: 0.9,
+					marginBottom: -2,
+					marginTop: 4,
+					letterSpacing: -0.3,
+				}}
+			>
+				<h1>No Tasks Yet</h1>
+			</Box>
+			<Box
+				sx={{
+					lineHeight: 1,
+					marginBottom: 2,
+					color: "#6D6C6C",
+					fontSize: "1em",
+					fontWeight: 400,
+					letterSpacing: 0.3,
+				}}
+			>
 				<p>You have no task created in your workspace yet.</p>
 				<p>Get productive. Create a Task Now.</p>
-			</div>
+			</Box>
+
 			<Button
+				size="large"
 				variant="contained"
-				style={{ textTransform: "revert", bottom: 5 }}
+				color="primary"
+				sx={{
+					textTransform: "revert",
+					width: "210px",
+					height: "55px",
+					borderRadius: "10px",
+				}}
 				onClick={onCreateTaskClick}
-			> 
+			>
 				Create a Task
 			</Button>
-		</div>
+		</Container>
 	);
 }
 
