@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { useTheme } from "@mui/material/styles";
 
 import {
@@ -32,6 +32,7 @@ import PasswordInput from "../components/shared/password-input/PasswordInput";
 import { useDispatch } from "react-redux";
 import { openModal } from "../store/slices/modal-slice";
 import ModalTypes from "../constants/modal-types";
+import workspaceService from "../services/workspace-service";
 import authService from "../services/auth-service";
 import { useNavigate } from "react-router-dom";
 import RoutePaths from "../constants/route-paths";
@@ -39,14 +40,6 @@ import RoutePaths from "../constants/route-paths";
 function Test() {
 	const dispatch = useDispatch();
 	const theme = useTheme();
-
-	const navigate = useNavigate();
-
-	const handleLogoutClick = () => {
-		authService.logout();
-		navigate(RoutePaths.LOGIN);
-	};
-
 	return (
 		<Box style={{ backgroundColor: "whitesmoke" }}>
 			<Container>
