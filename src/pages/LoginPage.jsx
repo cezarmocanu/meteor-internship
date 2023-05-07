@@ -12,18 +12,22 @@ import TextField from "../components/shared/input/TextField";
 import authService from "../services/auth-service";
 import RoutePaths from "../constants/route-paths";
 import PasswordInput from "../components/shared/password-input/PasswordInput";
+import { useDispatch } from "react-redux";
+import { login } from "../store/slices/authentication-slice";
 
 function LoginPage() {
 	const theme = useTheme();
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	const handleLoginClick = () => {
 		const username = "cezarmocanu@semicolon.com";
 		const password = "Fttq2VRa";
 
-		authService
-			.login(username, password)
-			.then((_) => navigate(RoutePaths.PRIVATE));
+		authService.login(username, password).then((_) => {
+			dispatch(login());
+			navigate(RoutePaths.TEST);
+		});
 	};
 
 	return (
