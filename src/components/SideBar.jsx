@@ -5,8 +5,8 @@ import AddIcon from "@mui/icons-material/Add";
 import Theme from "../theme";
 import SideBarItems from "./SideBarItems";
 
-const BASE_DRAWER_WIDTH = 72;
-const EXPANDED_DRAWER_WIDTH = 408;
+const BASE_DRAWER_WIDTH = 70;
+const EXPANDED_DRAWER_WIDTH = 400;
 
 function SideBar() {
 	const [isExpanded, setIsExpanded] = useState(false);
@@ -19,13 +19,18 @@ function SideBar() {
 				width: isExpanded ? EXPANDED_DRAWER_WIDTH : BASE_DRAWER_WIDTH,
 				height: "100vh",
 				flexShrink: 0,
+				"& .MuiDrawer-paper": {
+					width: isExpanded ? EXPANDED_DRAWER_WIDTH : BASE_DRAWER_WIDTH,
+					boxSizing: "border-box",
+				},
+				
 			}}
 		>
 			<Stack direction={"row"} height="100%">
 				<Stack
 					direction="column"
 					spacing={2}
-					padding={2}
+					padding={1}
 					sx={{
 						backgroundColor: Theme.palette.primary.main,
 					}}
