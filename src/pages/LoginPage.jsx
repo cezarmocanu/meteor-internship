@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Typography, Stack, Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
@@ -19,14 +19,19 @@ function LoginPage() {
 	const theme = useTheme();
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
 
 	const handleLoginClick = () => {
-		const username = "cezarmocanu@semicolon.com";
-		const password = "Fttq2VRa";
+		const loginData = {
+		 username,
+		 password ,
+	};
 
-		authService.login(username, password).then((_) => {
+		authService.login(loginData.username, loginData.password)
+		.then((_) => {
 			dispatch(login());
-			navigate(RoutePaths.TEST);
+			navigate(RoutePaths.PRIVATE);
 		});
 	};
 
@@ -58,11 +63,16 @@ function LoginPage() {
 									required
 									variant="outlined"
 									helperText="Example. mano@gmail.com"
+									value={username}
+									onChange={(e) => setUsername(e.target.value)}
 								/>
 							</Stack>
 							<Stack>
 								<FormLabel>Enter your Password</FormLabel>
-								<PasswordInput />
+								<PasswordInput 
+								value={password}
+								onChange={(e) => setPassword(e.target.value)}
+								/>
 							</Stack>
 							<FormControlLabel
 								control={<Checkbox checked={false} />}
