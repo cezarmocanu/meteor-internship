@@ -10,21 +10,26 @@ const login = async (username, password) => {
 		},
 	});
 
+	if (response.status !== 200) {
+		return false;
+	}
+
 	const data = await response.json();
 	localStorage.setItem("token", data.token);
+	return true;
 };
 
 const logout = async () => {
 	const token = localStorage.getItem("token");
-	const response = await fetch(ENDPOINTS.AUTH.LOGOUT, {
+	await fetch(ENDPOINTS.AUTH.LOGOUT, {
 		method: "POST",
 		headers: {
 			Authorization: `Bearer ${token}`,
 		},
 	});
 
-	const data = await response.json();
 	localStorage.removeItem("token");
+	return true;
 };
 
 const authService = {

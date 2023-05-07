@@ -35,6 +35,7 @@ import ModalTypes from "../constants/modal-types";
 import authService from "../services/auth-service";
 import { useNavigate } from "react-router-dom";
 import RoutePaths from "../constants/route-paths";
+import { logout } from "../store/slices/authentication-slice";
 
 function Test() {
 	const dispatch = useDispatch();
@@ -43,8 +44,10 @@ function Test() {
 	const navigate = useNavigate();
 
 	const handleLogoutClick = () => {
-		authService.logout();
-		navigate(RoutePaths.LOGIN);
+		authService.logout().then((_) => {
+			dispatch(logout());
+			navigate(RoutePaths.LOGIN);
+		});
 	};
 
 	return (
@@ -57,12 +60,7 @@ function Test() {
 					DeleteModalContent
 				</Button>
 
-				<Button
-					variant="contained"
-					color="primary"
-					size="large"
-					onClick={handleLogoutClick}
-				>
+				<Button variant="contained" color="primary" onClick={handleLogoutClick}>
 					Log out
 				</Button>
 				<Button
