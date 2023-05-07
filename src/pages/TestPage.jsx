@@ -13,6 +13,7 @@ import {
 	CardHeader,
 	Avatar,
 	InputAdornment,
+	Badge,
 } from "@mui/material";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
@@ -36,6 +37,11 @@ import authService from "../services/auth-service";
 import { useNavigate } from "react-router-dom";
 import RoutePaths from "../constants/route-paths";
 import { logout } from "../store/slices/authentication-slice";
+import DeleteBadge from "../components/shared/Thumbnail/Badges/DeleteBadge";
+import CloseIcon from "@mui/icons-material/Close";
+import StarBadge from "../components/shared/Thumbnail/Badges/StarBadge";
+import CheckIcon from "@mui/icons-material/Check";
+import { positions } from "@mui/system";
 
 function Test() {
 	const dispatch = useDispatch();
@@ -158,6 +164,75 @@ function Test() {
 				<Button size="small" variant="contained" color="success">
 					Test
 				</Button>
+
+				<Stack spacing={{ xs: 1, sm: 2 }} sx={{ margin: 3 }}>
+					<Stack direction="row" spacing={5}>
+						<DeleteBadge badgeContent={<CloseIcon sx={{ fontSize: 12 }} />}>
+							<Avatar
+								src="AvatarPhoto.jpg"
+								variant="rounded"
+								sx={{ width: 56, height: 56, borderRadius: "12px" }}
+							/>
+						</DeleteBadge>
+
+						<Badge badgeContent={<StarBadge src="/StarBadge.png" />}>
+							<Avatar
+								src="AvatarPhoto.jpg"
+								variant="rounded"
+								sx={{ width: 56, height: 56, borderRadius: "12px" }}
+							/>
+						</Badge>
+						<StarBadge src="/StarBadge.png" sx={{ zIndex: "modal" }}>
+							<CheckIcon
+								sx={{
+									position: "absolute",
+									zIndex: "tooltip",
+								}}
+							/>
+						</StarBadge>
+						<Avatar>
+							<CheckIcon fontSize="small" />
+						</Avatar>
+						<CheckIcon fontSize="small" />
+					</Stack>
+					<Stack direction="row" spacing={5}>
+						<DeleteBadge
+							variant="standard"
+							badgeContent={<CloseIcon sx={{ fontSize: 12 }} />}
+						>
+							<Avatar
+								src="AvatarPhoto.jpg"
+								variant="rounded"
+								sx={{ width: 64, height: 64, borderRadius: "16px" }}
+							/>
+						</DeleteBadge>
+					</Stack>
+					<Stack direction="row" spacing={5}>
+						<DeleteBadge
+							variant="standard"
+							badgeContent={<CloseIcon sx={{ fontSize: 12 }} />}
+						>
+							<Avatar
+								src="AvatarPhoto.jpg"
+								variant="rounded"
+								sx={{ width: 72, height: 72, borderRadius: "16px" }}
+							/>
+						</DeleteBadge>
+					</Stack>
+					<Stack direction="row" spacing={5}>
+						<DeleteBadge
+							variant="standard"
+							badgeContent={<CloseIcon sx={{ fontSize: 12 }} />}
+						>
+							<Avatar
+								src="AvatarPhoto.jpg"
+								variant="rounded"
+								sx={{ width: 90, height: 90, borderRadius: "16px" }}
+							/>
+						</DeleteBadge>
+					</Stack>
+				</Stack>
+
 				<Box display="flex" gap="5px">
 					<Box>
 						<Stack>
