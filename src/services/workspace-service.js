@@ -1,5 +1,4 @@
 import { ENDPOINTS } from "../constants/api";
-import { setWorkspace } from "../store/slices/workspace-slice";
 
 const getWorkspace = async () => {
 	const token = localStorage.getItem("token");
@@ -13,10 +12,9 @@ const getWorkspace = async () => {
 
 	if (response.status === 200) {
 		const data = await response.json();
-		localStorage.setWorkSpace("token", data.token);
-		dispatch(setWorkspace(data));
+		return data;
 	} else {
-		dispatch(setWorkspace([]));
+		return[];
 	}
 };
 
