@@ -1,6 +1,6 @@
 import { ENDPOINTS } from "../constants/api";
 
-const getWorkspace = async () => {
+const getWorkspaces = async () => {
 	const token = localStorage.getItem("token");
 
 	const response = await fetch(ENDPOINTS.WORKSPACE.USER_WORKSPACE, {
@@ -19,7 +19,7 @@ const getWorkspace = async () => {
 };
 
 const workspaceService = {
-	getWorkspace,
+	getWorkspaces,
 };
 
 export default workspaceService;
