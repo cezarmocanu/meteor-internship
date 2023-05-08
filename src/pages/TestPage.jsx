@@ -46,7 +46,6 @@ function Test() {
 	const theme = useTheme();
 
 	const navigate = useNavigate();
-
 	const handleLogoutClick = () => {
 		authService.logout().then((_) => {
 			dispatch(logout());
@@ -74,7 +73,9 @@ function Test() {
 				</Box>
 				<Button
 					variant="contained"
-					onClick={() => dispatch(openModal(ModalTypes.DELETE_TASK))}
+					onClick={() => {
+						dispatch(openModal(ModalTypes.DELETE_TASK));
+					}}
 				>
 					DeleteModalContent
 				</Button>
@@ -84,27 +85,35 @@ function Test() {
 				</Button>
 				<Button
 					variant="contained"
-					onClick={() => dispatch(openModal(ModalTypes.TEST))}
+					onClick={() => {
+						dispatch(openModal(ModalTypes.TEST));
+					}}
 				>
 					Open modal test 1
 				</Button>
 				<Button
 					variant="contained"
-					onClick={() => dispatch(openModal(ModalTypes.TEST2))}
+					onClick={() => {
+						dispatch(openModal(ModalTypes.TEST2));
+					}}
 				>
 					Open modal test 2
 				</Button>
 
 				<Button
 					variant="contained"
-					onClick={() => dispatch(openModal(ModalTypes.LOGOUT))}
+					onClick={() => {
+						dispatch(openModal(ModalTypes.LOGOUT));
+					}}
 				>
 					Logout Modal
 				</Button>
 
 				<Button
 					variant="contained"
-					onClick={() => dispatch(openModal(ModalTypes.CREATE_TASK))}
+					onClick={() => {
+						dispatch(openModal(ModalTypes.CREATE_TASK));
+					}}
 				>
 					CreateTask
 				</Button>

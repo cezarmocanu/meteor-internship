@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Drawer, Typography, Stack, Avatar, IconButton } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { useTheme } from "@mui/material/styles";
@@ -11,8 +10,18 @@ const BASE_DRAWER_WIDTH = 70;
 const EXPANDED_DRAWER_WIDTH = 400;
 
 function SideBar() {
-	const [isExpanded, setIsExpanded] = useState(false);
+	const [isExpanded, setIsExpanded] = useState(
+		JSON.parse(localStorage.getItem("isExpanded"))
+	);
 	const theme = useTheme();
+
+	const handleExpandClick = useCallback(() => {
+		setIsExpanded((isExpanded) => {
+			const nextValue = !isExpanded;
+			localStorage.setItem("isExpanded", nextValue);
+			return nextValue;
+		});
+	}, [setIsExpanded]);
 
 	return (
 		<Drawer
@@ -26,14 +35,13 @@ function SideBar() {
 					width: isExpanded ? EXPANDED_DRAWER_WIDTH : BASE_DRAWER_WIDTH,
 					boxSizing: "border-box",
 				},
-				
 			}}
 		>
 			<Stack direction={"row"} height="100%">
 				<Stack
 					direction="column"
 					spacing={2}
-					padding={1}
+					padding={2}
 					sx={{
 						backgroundColor: theme.palette.primary.main,
 					}}
@@ -45,7 +53,7 @@ function SideBar() {
 							backgroundColor: theme.palette.primary.main,
 							borderRadius: "25%",
 						}}
-						onClick={() => setIsExpanded((isExpanded) => !isExpanded)}
+						onClick={handleExpandClick}
 					>
 						{isExpanded ? <ChevronLeftIcon /> : <ChevronRightIcon />}
 					</IconButton>
