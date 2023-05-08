@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTheme } from "@mui/material/styles";
 
 import {
@@ -28,18 +28,42 @@ import FormLabel from "../components/shared/input/FormLabel";
 import TextField from "../components/shared/input/TextField";
 import TaskTimeline from "../components/TaskTimeline";
 import TestCounter from "../components/TestCounter";
-import PasswordInput from "../components/shared/PasswordInput/PasswordInput";
+import PasswordInput from "../components/shared/password-input/PasswordInput";
 import { useDispatch } from "react-redux";
 import { openModal } from "../store/slices/modal-slice";
 import ModalTypes from "../constants/modal-types";
+import authService from "../services/auth-service";
+import { useNavigate } from "react-router-dom";
+import RoutePaths from "../constants/route-paths";
+import { logout } from "../store/slices/authentication-slice";
 import NoTasksPlaceholder from "../components/widget/NoTasksPlaceholder";
 
 function Test() {
 	const dispatch = useDispatch();
 	const theme = useTheme();
+
+	const navigate = useNavigate();
+
+	const handleLogoutClick = () => {
+		authService.logout().then((_) => {
+			dispatch(logout());
+			navigate(RoutePaths.LOGIN);
+		});
+	};
+
 	return (
 		<Box style={{ backgroundColor: "whitesmoke" }}>
 			<Container>
+				<Button
+					variant="contained"
+					onClick={() => dispatch(openModal(ModalTypes.DELETE_TASK))}
+				>
+					DeleteModalContent
+				</Button>
+
+				<Button variant="contained" color="primary" onClick={handleLogoutClick}>
+					Log out
+				</Button>
 				<Button
 					variant="contained"
 					onClick={() => dispatch(openModal(ModalTypes.TEST))}
@@ -51,6 +75,20 @@ function Test() {
 					onClick={() => dispatch(openModal(ModalTypes.TEST2))}
 				>
 					Open modal test 2
+				</Button>
+
+				<Button
+					variant="contained"
+					onClick={() => dispatch(openModal(ModalTypes.LOGOUT))}
+				>
+					Logout Modal
+				</Button>
+
+				<Button
+					variant="contained"
+					onClick={() => dispatch(openModal(ModalTypes.CREATE_TASK))}
+				>
+					CreateTask
 				</Button>
 				<TestCounter />
 				<TestCounter />
@@ -207,7 +245,6 @@ function Test() {
 								helperText="Information about the input"
 							/>
 						</Stack>
-
 						<Stack>
 							<FormLabel disabled>Email Address</FormLabel>
 							<TextField
@@ -553,13 +590,11 @@ function Test() {
 				<Chip avatar={<Avatar> </Avatar>} color="primary" label="just text" />
 				<Box>
 					<Chip avatar={<Avatar> </Avatar>} color="primary" variant="dot" />
-
 					<Chip
 						avatar={<Avatar> </Avatar>}
 						color="primary"
 						variant="outlined"
 					/>
-
 					<Chip
 						avatar={<Avatar> </Avatar>}
 						color="primary"
@@ -569,13 +604,11 @@ function Test() {
 				</Box>
 				<Box>
 					<Chip avatar={<Avatar> </Avatar>} color="secondary" variant="dot" />
-
 					<Chip
 						avatar={<Avatar> </Avatar>}
 						color="secondary"
 						variant="outlined"
 					/>
-
 					<Chip
 						avatar={<Avatar> </Avatar>}
 						color="secondary"
@@ -585,9 +618,7 @@ function Test() {
 				</Box>
 				<Box>
 					<Chip avatar={<Avatar> </Avatar>} color="error" variant="dot" />
-
 					<Chip avatar={<Avatar> </Avatar>} color="error" variant="outlined" />
-
 					<Chip
 						avatar={<Avatar> </Avatar>}
 						color="error"
@@ -597,13 +628,11 @@ function Test() {
 				</Box>
 				<Box>
 					<Chip avatar={<Avatar> </Avatar>} variant="dot" color="warning" />
-
 					<Chip
 						avatar={<Avatar> </Avatar>}
 						color="warning"
 						variant="outlined"
 					/>
-
 					<Chip
 						avatar={<Avatar> </Avatar>}
 						color="warning"
@@ -613,9 +642,7 @@ function Test() {
 				</Box>
 				<Box>
 					<Chip avatar={<Avatar> </Avatar>} color="info" variant="dot" />
-
 					<Chip avatar={<Avatar> </Avatar>} color="info" variant="outlined" />
-
 					<Chip
 						avatar={<Avatar> </Avatar>}
 						color="info"
@@ -625,9 +652,7 @@ function Test() {
 				</Box>
 				<Box>
 					<Chip avatar={<Avatar> </Avatar>} color="info" variant="dot" />
-
 					<Chip avatar={<Avatar> </Avatar>} color="info" variant="outlined" />
-
 					<Chip
 						avatar={<Avatar> </Avatar>}
 						color="info"
