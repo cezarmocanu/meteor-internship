@@ -39,9 +39,6 @@ function Test() {
 	const theme = useTheme();
 	return (
 		<Box style={{ backgroundColor: "whitesmoke" }}>
-			<Box sx={{ width: "100vw", height: "100vh" }}>
-				<NoTasksPlaceholder />
-			</Box>
 			<Container>
 				<Button
 					variant="contained"
@@ -828,6 +825,13 @@ function Test() {
 			<TaskTimeline startDate={Date.now()} dueDate={Date.now()} />
 			<TaskTimeline startDate={new Date("2023-10-10")} dueDate={Date.now()} />
 			<PasswordInput />
+			<Box sx={{ width: "100vw", height: "100vh" }}>
+				<NoTasksPlaceholder
+					onCreateTaskClick={() => {
+						console.log("Task created 2");
+					}}
+				/>
+			</Box>
 		</Box>
 	);
 }

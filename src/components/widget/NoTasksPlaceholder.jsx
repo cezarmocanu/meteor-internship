@@ -2,8 +2,7 @@ import { Container, Box, Button } from "@mui/material";
 import widget from "./widget.png";
 import ContainedImage from "../ContainedImage";
 
-function NoTasksPlaceholder({onCreateTaskClick}) {
-		//console.log("The button was clicked!");
+function NoTasksPlaceholder({ onCreateTaskClick }) {
 	return (
 		<Container
 			sx={{
