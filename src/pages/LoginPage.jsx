@@ -33,7 +33,6 @@ function LoginPage() {
 	};
 
 	const handleLoginClick = () => {
-		localStorage.setItem("isExpanded", false);
 		authService
 			.login(loginData.username, loginData.password)
 			.then((loggedInWithSuccess) => {

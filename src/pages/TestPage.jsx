@@ -73,8 +73,9 @@ function Test() {
 				</Box>
 				<Button
 					variant="contained"
-					onClick={() => {dispatch(openModal(ModalTypes.DELETE_TASK))
-						localStorage.setItem('isExpanded', false);}}
+					onClick={() => {
+						dispatch(openModal(ModalTypes.DELETE_TASK));
+					}}
 				>
 					DeleteModalContent
 				</Button>
@@ -84,16 +85,17 @@ function Test() {
 				</Button>
 				<Button
 					variant="contained"
-					onClick={() => {dispatch(openModal(ModalTypes.TEST));
-						localStorage.setItem('isExpanded', false);
+					onClick={() => {
+						dispatch(openModal(ModalTypes.TEST));
 					}}
 				>
 					Open modal test 1
 				</Button>
 				<Button
 					variant="contained"
-					onClick={() => {dispatch(openModal(ModalTypes.TEST2));
-						localStorage.setItem('isExpanded', false)}}
+					onClick={() => {
+						dispatch(openModal(ModalTypes.TEST2));
+					}}
 				>
 					Open modal test 2
 				</Button>
@@ -102,15 +104,16 @@ function Test() {
 					variant="contained"
 					onClick={() => {
 						dispatch(openModal(ModalTypes.LOGOUT));
-						localStorage.setItem('isExpanded', false);}}
+					}}
 				>
 					Logout Modal
 				</Button>
 
 				<Button
 					variant="contained"
-					onClick={() => {dispatch(openModal(ModalTypes.CREATE_TASK))
-						localStorage.setItem('isExpanded', false);}}
+					onClick={() => {
+						dispatch(openModal(ModalTypes.CREATE_TASK));
+					}}
 				>
 					CreateTask
 				</Button>
