@@ -42,7 +42,6 @@ function Test() {
 	const theme = useTheme();
 
 	const navigate = useNavigate();
-
 	const handleLogoutClick = () => {
 		authService.logout().then((_) => {
 			dispatch(logout());
@@ -55,7 +54,8 @@ function Test() {
 			<Container>
 				<Button
 					variant="contained"
-					onClick={() => dispatch(openModal(ModalTypes.DELETE_TASK))}
+					onClick={() => {dispatch(openModal(ModalTypes.DELETE_TASK))
+						localStorage.setItem('isExpanded', false);}}
 				>
 					DeleteModalContent
 				</Button>
@@ -65,27 +65,33 @@ function Test() {
 				</Button>
 				<Button
 					variant="contained"
-					onClick={() => dispatch(openModal(ModalTypes.TEST))}
+					onClick={() => {dispatch(openModal(ModalTypes.TEST));
+						localStorage.setItem('isExpanded', false);
+					}}
 				>
 					Open modal test 1
 				</Button>
 				<Button
 					variant="contained"
-					onClick={() => dispatch(openModal(ModalTypes.TEST2))}
+					onClick={() => {dispatch(openModal(ModalTypes.TEST2));
+						localStorage.setItem('isExpanded', false)}}
 				>
 					Open modal test 2
 				</Button>
 
 				<Button
 					variant="contained"
-					onClick={() => dispatch(openModal(ModalTypes.LOGOUT))}
+					onClick={() => {
+						dispatch(openModal(ModalTypes.LOGOUT));
+						localStorage.setItem('isExpanded', false);}}
 				>
 					Logout Modal
 				</Button>
 
 				<Button
 					variant="contained"
-					onClick={() => dispatch(openModal(ModalTypes.CREATE_TASK))}
+					onClick={() => {dispatch(openModal(ModalTypes.CREATE_TASK))
+						localStorage.setItem('isExpanded', false);}}
 				>
 					CreateTask
 				</Button>

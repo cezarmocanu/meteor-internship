@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState,useEffect } from "react";
+import { useState, } from "react";
 import { Drawer, Button, Typography, Stack, Avatar } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import Theme from "../theme";
@@ -10,7 +10,6 @@ const EXPANDED_DRAWER_WIDTH = 408;
 
 function SideBar() {
 	const [isExpanded, setIsExpanded] = useState(false);
-
 	return (
 		<Drawer
 			variant="permanent"
@@ -34,8 +33,10 @@ function SideBar() {
 					<Button
 						color="success"
 						onClick={() => 
-							{setIsExpanded((isExpanded) => !isExpanded)
-							localStorage.setItem('isExpanded', JSON.stringify(isExpanded));}}
+							{  
+								 setIsExpanded((isExpanded) => !isExpanded);
+								localStorage.setItem('isExpanded', isExpanded);
+							}}
 					>
 						<AddIcon />
 					</Button>

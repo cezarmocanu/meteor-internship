@@ -21,6 +21,7 @@ function LoginPage() {
 	const dispatch = useDispatch();
 
 	const handleLoginClick = () => {
+		localStorage.setItem('isExpanded', false);
 		const username = "cezarmocanu@semicolon.com";
 		const password = "Fttq2VRa";
 
