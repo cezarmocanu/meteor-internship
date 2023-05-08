@@ -8,7 +8,6 @@ const store = configureStore({
 		counter: CounterReducer,
 		authentication: AuthenticationReducer,
 		modal: ModalReducer,
-		
 	},
 });
 

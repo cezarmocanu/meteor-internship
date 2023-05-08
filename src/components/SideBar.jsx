@@ -1,15 +1,18 @@
 import * as React from "react";
 import { useState } from "react";
-import { Drawer, Button, Typography, Stack, Avatar } from "@mui/material";
+import { Drawer, Typography, Stack, Avatar, IconButton } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import Theme from "../theme";
+import { useTheme } from "@mui/material/styles";
 import SideBarItems from "./SideBarItems";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
-const BASE_DRAWER_WIDTH = 72;
-const EXPANDED_DRAWER_WIDTH = 408;
+const BASE_DRAWER_WIDTH = 70;
+const EXPANDED_DRAWER_WIDTH = 400;
 
 function SideBar() {
 	const [isExpanded, setIsExpanded] = useState(false);
+	const theme = useTheme();
 
 	return (
 		<Drawer
@@ -19,26 +22,45 @@ function SideBar() {
 				width: isExpanded ? EXPANDED_DRAWER_WIDTH : BASE_DRAWER_WIDTH,
 				height: "100vh",
 				flexShrink: 0,
+				"& .MuiDrawer-paper": {
+					width: isExpanded ? EXPANDED_DRAWER_WIDTH : BASE_DRAWER_WIDTH,
+					boxSizing: "border-box",
+				},
+				
 			}}
 		>
 			<Stack direction={"row"} height="100%">
 				<Stack
 					direction="column"
 					spacing={2}
-					padding={2}
+					padding={1}
 					sx={{
-						backgroundColor: Theme.palette.primary.main,
+						backgroundColor: theme.palette.primary.main,
 					}}
 					alignItems="center"
 				>
-					<Button
-						color="success"
+					<IconButton
+						sx={{
+							color: theme.palette.secondary.contrastText,
+							backgroundColor: theme.palette.primary.main,
+							borderRadius: "25%",
+						}}
 						onClick={() => setIsExpanded((isExpanded) => !isExpanded)}
 					>
+						{isExpanded ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+					</IconButton>
+					<Avatar sx={{ marginTop: 4, borderRadius: "25%" }} variant="rounded">
+						N
+					</Avatar>
+					<IconButton
+						sx={{
+							color: theme.palette.secondary.contrastText,
+							backgroundColor: theme.palette.primary.main,
+							borderRadius: "25%",
+						}}
+					>
 						<AddIcon />
-					</Button>
-					<Avatar sx={{ marginTop: 4 }}>N</Avatar>
-					<AddIcon />
+					</IconButton>
 				</Stack>
 				<Stack
 					sx={{
