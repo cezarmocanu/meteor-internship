@@ -14,13 +14,12 @@ function NoTasksPlaceholder({onCreateTaskClick}) {
 				alignItems: "center",
 				alignContent: "center",
 				justifyContent: "center",
-				width: "100vw",
-				height: "100vh",
+				width: "100%",
+				height: "100%",
 				margin: "auto",
 			}}
 		>
 			<ContainedImage src={widget} width={170} height={140} />
-
 			<Box
 				sx={{
 					fontSize: 15,

@@ -39,7 +39,9 @@ function Test() {
 	const theme = useTheme();
 	return (
 		<Box style={{ backgroundColor: "whitesmoke" }}>
-		    <NoTasksPlaceholder/>
+			<Box sx={{ width: "100vw", height: "100vh" }}>
+				<NoTasksPlaceholder />
+			</Box>
 			<Container>
 				<Button
 					variant="contained"
