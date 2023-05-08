@@ -22,6 +22,7 @@ import Layout from "./components/Layout";
 import CreateTask from "./components/modal-content/CreateTask";
 import LogoutModal from "./components/modal-content/LogoutModal";
 import DeleteTaskModalContent from "./components/modal-content/DeleteTaskModalContent";
+import TaskDetailsPage from "./pages/TaskDetailsPage";
 
 function App() {
 	const dispatch = useDispatch();
@@ -95,6 +96,14 @@ function App() {
 						element={
 							<Layout>
 								<WorkspacesCardsPage />
+							</Layout>
+						}
+					/>
+					<Route
+						path={RoutePaths.TASK_DETAILS}
+						element={
+							<Layout>
+								<TaskDetailsPage />
 							</Layout>
 						}
 					/>
