@@ -39,6 +39,7 @@ import authService from "../services/auth-service";
 import { useNavigate } from "react-router-dom";
 import RoutePaths from "../constants/route-paths";
 import { logout } from "../store/slices/authentication-slice";
+import NoTasksPlaceholder from "../components/widget/NoTasksPlaceholder";
 
 function Test() {
 	const dispatch = useDispatch();
@@ -56,7 +57,7 @@ function Test() {
 	const [workspaces, setWorkspaces] = useState([]);
 
 	useEffect(() => {
-		workspaceService.getWorkspaces().then ((data) => {
+		workspaceService.getWorkspaces().then((data) => {
 			setWorkspaces(data);
 		});
 	}, []);
@@ -66,9 +67,9 @@ function Test() {
 			<Container>
 				<Box>
 					<List>
-					{workspaces.map((workspace) => (
-						<ListItemText key = {workspace.id}>{workspace.name}</ListItemText>
-					))}
+						{workspaces.map((workspace) => (
+							<ListItemText key={workspace.id}>{workspace.name}</ListItemText>
+						))}
 					</List>
 				</Box>
 				<Button
@@ -867,6 +868,13 @@ function Test() {
 			<TaskTimeline startDate={Date.now()} dueDate={Date.now()} />
 			<TaskTimeline startDate={new Date("2023-10-10")} dueDate={Date.now()} />
 			<PasswordInput />
+			<Box sx={{ width: "100vw", height: "100vh" }}>
+				<NoTasksPlaceholder
+					onCreateTaskClick={() => {
+						console.log("Task created 2");
+					}}
+				/>
+			</Box>
 		</Box>
 	);
 }
