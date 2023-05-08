@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Drawer, Button, Typography, Stack, Avatar } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import Theme from "../theme";
@@ -16,7 +16,7 @@ function SideBar() {
 			variant="permanent"
 			anchor={"left"}
 			sx={{
-				width: isExpanded ? EXPANDED_DRAWER_WIDTH : BASE_DRAWER_WIDTH,
+				width: JSON.parse(localStorage.getItem('isExpanded')) ? EXPANDED_DRAWER_WIDTH : BASE_DRAWER_WIDTH,
 				height: "100vh",
 				flexShrink: 0,
 			}}
@@ -33,7 +33,9 @@ function SideBar() {
 				>
 					<Button
 						color="success"
-						onClick={() => setIsExpanded((isExpanded) => !isExpanded)}
+						onClick={() => 
+							{setIsExpanded((isExpanded) => !isExpanded)
+							localStorage.setItem('isExpanded', JSON.stringify(isExpanded));}}
 					>
 						<AddIcon />
 					</Button>
@@ -42,7 +44,7 @@ function SideBar() {
 				</Stack>
 				<Stack
 					sx={{
-						width: isExpanded ? EXPANDED_DRAWER_WIDTH - BASE_DRAWER_WIDTH : 0,
+						width: JSON.parse(localStorage.getItem('isExpanded')) ? EXPANDED_DRAWER_WIDTH - BASE_DRAWER_WIDTH : 0,
 						transition: "width 0.2s",
 					}}
 				>
