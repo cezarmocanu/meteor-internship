@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useTheme } from "@mui/material/styles";
 
 import {
@@ -13,6 +13,8 @@ import {
 	CardHeader,
 	Avatar,
 	InputAdornment,
+	List,
+	ListItemText,
 } from "@mui/material";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
@@ -32,6 +34,7 @@ import PasswordInput from "../components/shared/password-input/PasswordInput";
 import { useDispatch } from "react-redux";
 import { openModal } from "../store/slices/modal-slice";
 import ModalTypes from "../constants/modal-types";
+import workspaceService from "../services/workspace-service";
 import authService from "../services/auth-service";
 import { useNavigate } from "react-router-dom";
 import RoutePaths from "../constants/route-paths";
@@ -51,9 +54,24 @@ function Test() {
 		});
 	};
 
+	const [workspaces, setWorkspaces] = useState([]);
+
+	useEffect(() => {
+		workspaceService.getWorkspaces().then((data) => {
+			setWorkspaces(data);
+		});
+	}, []);
+
 	return (
 		<Box style={{ backgroundColor: "whitesmoke" }}>
 			<Container>
+				<Box>
+					<List>
+						{workspaces.map((workspace) => (
+							<ListItemText key={workspace.id}>{workspace.name}</ListItemText>
+						))}
+					</List>
+				</Box>
 				<Button
 					variant="contained"
 					onClick={() => dispatch(openModal(ModalTypes.DELETE_TASK))}
