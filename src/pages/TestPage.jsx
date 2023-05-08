@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTheme } from "@mui/material/styles";
 
 import {
@@ -36,6 +36,7 @@ import authService from "../services/auth-service";
 import { useNavigate } from "react-router-dom";
 import RoutePaths from "../constants/route-paths";
 import { logout } from "../store/slices/authentication-slice";
+import NoTasksPlaceholder from "../components/widget/NoTasksPlaceholder";
 
 function Test() {
 	const dispatch = useDispatch();
@@ -849,6 +850,13 @@ function Test() {
 			<TaskTimeline startDate={Date.now()} dueDate={Date.now()} />
 			<TaskTimeline startDate={new Date("2023-10-10")} dueDate={Date.now()} />
 			<PasswordInput />
+			<Box sx={{ width: "100vw", height: "100vh" }}>
+				<NoTasksPlaceholder
+					onCreateTaskClick={() => {
+						console.log("Task created 2");
+					}}
+				/>
+			</Box>
 		</Box>
 	);
 }
