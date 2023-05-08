@@ -8,7 +8,6 @@ import {
 	AlertTitle,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import BackgroundImage from "../../src/assets/images/city-background.svg";
 
 function ForgotPasswordPage() {
 	const theme = useTheme();
@@ -21,7 +20,7 @@ function ForgotPasswordPage() {
 			sx={{
 				width: "100vw",
 				height: "100vh",
-				backgroundImage: `url(${BackgroundImage})`,
+				backgroundImage: `url(city-background.svg)`,
 				backgroundRepeat: "no-repeat",
 				backgroundSize: "cover",
 				backgroundPosition: "center",
