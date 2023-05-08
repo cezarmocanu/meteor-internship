@@ -13,9 +13,9 @@ const getWorkspaces = async () => {
 	if (response.status === 200) {
 		const data = await response.json();
 		return data;
-	} else {
-		return[];
 	}
+
+	return [];
 };
 
 const workspaceService = {
