@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Typography, Stack, Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
@@ -20,14 +20,29 @@ function LoginPage() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
-	const handleLoginClick = () => {
-		const username = "cezarmocanu@semicolon.com";
-		const password = "Fttq2VRa";
+	const [loginData, setLoginData] = useState({
+		username: "",
+		password: "",
+	});
 
-		authService.login(username, password).then((_) => {
-			dispatch(login());
-			navigate(RoutePaths.TEST);
-		});
+	const onTextFieldChange = (e) => {
+		setLoginData((prevState) => ({
+			...prevState,
+			[e.target.name]: e.target.value,
+		}));
+	};
+
+	const handleLoginClick = () => {
+		authService
+			.login(loginData.username, loginData.password)
+			.then((loggedInWithSuccess) => {
+				if (!loggedInWithSuccess) {
+					return;
+				}
+
+				dispatch(login());
+				navigate(RoutePaths.TEST);
+			});
 	};
 
 	return (
@@ -55,6 +70,9 @@ function LoginPage() {
 							<Stack>
 								<FormLabel>Email Address</FormLabel>
 								<TextField
+									name="username"
+									value={loginData.username}
+									onChange={onTextFieldChange}
 									required
 									variant="outlined"
 									helperText="Example. mano@gmail.com"
@@ -62,7 +80,11 @@ function LoginPage() {
 							</Stack>
 							<Stack>
 								<FormLabel>Enter your Password</FormLabel>
-								<PasswordInput />
+								<PasswordInput
+									name="password"
+									value={loginData.password}
+									onChange={onTextFieldChange}
+								/>
 							</Stack>
 							<FormControlLabel
 								control={<Checkbox checked={false} />}
