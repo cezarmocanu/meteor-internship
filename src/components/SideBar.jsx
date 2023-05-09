@@ -4,12 +4,21 @@ import { Drawer, Button, Typography, Stack, Avatar } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import Theme from "../theme";
 import SideBarItems from "./SideBarItems";
+import ModalTypes from "../constants/modal-types";
+import { useDispatch } from "react-redux";
+import { openModal } from "../store/slices/modal-slice";
 
 const BASE_DRAWER_WIDTH = 72;
 const EXPANDED_DRAWER_WIDTH = 408;
 
 function SideBar() {
 	const [isExpanded, setIsExpanded] = useState(false);
+	const dispatch = useDispatch();
+
+	const handleLogoutClick = () => {
+		authService.logout();
+		navigate(RoutePaths.LOGIN);
+	};
 
 	return (
 		<Drawer
@@ -53,6 +62,13 @@ function SideBar() {
 						<Typography>Emanuel's Space</Typography>
 					</Stack>
 					<SideBarItems />
+					<Button
+						size="small"
+						variant="contained"
+						onClick={() => dispatch(openModal(ModalTypes.LOGOUT))}
+					>
+						Logout Modal
+					</Button>
 				</Stack>
 			</Stack>
 		</Drawer>

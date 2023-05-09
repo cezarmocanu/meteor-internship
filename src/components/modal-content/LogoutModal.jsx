@@ -1,6 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { closeModal } from "../../store/slices/modal-slice";
+import { logout } from "../../store/slices/authentication-slice";
+import { useNavigate } from "react-router-dom";
+
 import {
 	DialogTitle,
 	DialogContent,
@@ -32,7 +34,8 @@ function LogoutModal() {
 				<Button
 					variant="contained"
 					color="secondary"
-					onClick={() => dispatch(closeModal())}
+					onClick={() => dispatch(logout())}
+					href="/signup"
 				>
 					Logout
 				</Button>
