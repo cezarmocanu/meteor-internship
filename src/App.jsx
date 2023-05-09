@@ -22,6 +22,7 @@ import LogoutModal from "./components/modal-content/LogoutModal";
 import DeleteTaskModalContent from "./components/modal-content/DeleteTaskModalContent";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import FadeIn from "./utils/FadeIn";
+import TaskDetailsPage from "./pages/TaskDetailsPage";
 
 function App() {
 	const dispatch = useDispatch();
@@ -121,7 +122,7 @@ function App() {
 						path={RoutePaths.TASK_DETAILS}
 						element={
 							<ProtectedRoute>
-								<WorkspacesCardsPage />
+								<TaskDetailsPage />
 							</ProtectedRoute>
 						}
 					/>
