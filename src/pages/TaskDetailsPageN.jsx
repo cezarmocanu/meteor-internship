@@ -3,7 +3,7 @@ import TaskDetailsCard from "../components/TaskDetailsCard";
 import { Container, Button } from "@mui/material";
 import AssignmentReturnSharpIcon from "@mui/icons-material/AssignmentReturnSharp";
 
-function TaskDetailsPage() {
+function TaskDetailsPageN() {
 	return (
 		<Container>
 			<AssignmentReturnSharpIcon />
@@ -15,4 +15,4 @@ function TaskDetailsPage() {
 	);
 }
 
-export default TaskDetailsPage;
+export default TaskDetailsPageN;
