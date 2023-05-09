@@ -20,7 +20,7 @@ function ForgotPasswordPage() {
 			sx={{
 				width: "100vw",
 				height: "100vh",
-				backgroundImage: "url(city-background.svg)",
+				backgroundImage: `url(city-background.svg)`,
 				backgroundRepeat: "no-repeat",
 				backgroundSize: "cover",
 				backgroundPosition: "center",

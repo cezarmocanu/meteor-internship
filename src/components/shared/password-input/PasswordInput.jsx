@@ -1,29 +1,25 @@
 import * as React from "react";
 import { useState } from "react";
-import { useTheme } from "@mui/material/styles";
 import { Stack, InputAdornment, IconButton } from "@mui/material";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
-import FormLabel from "../input/FormLabel";
-import TextField from "../input/TextField";
+import TextField from "../../shared/input/TextField";
 
-function PasswordInput() {
+function PasswordInput({ ...props }) {
 	const [showPassword, setShowPassword] = useState(false);
 	const handleClickShowPassword = () => setShowPassword((show) => !show);
 
 	return (
-		<Stack alignItems="center">
+		<Stack alignItems="left">
 			<Stack gap={1}>
-				<FormLabel>Password</FormLabel>
 				<TextField
 					type={showPassword ? "text" : "password"}
 					InputProps={{
 						endAdornment: (
-							<InputAdornment>
+							<InputAdornment position="end">
 								<IconButton
 									aria-label="toggle password visibility"
 									onClick={handleClickShowPassword}
-									edge="end"
 								>
 									{showPassword ? (
 										<VisibilityOffOutlinedIcon />
@@ -36,6 +32,7 @@ function PasswordInput() {
 					}}
 					variant="outlined"
 					size="medium"
+					{...props}
 				/>
 			</Stack>
 		</Stack>
