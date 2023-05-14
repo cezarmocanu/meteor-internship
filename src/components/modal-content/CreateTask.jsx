@@ -3,6 +3,7 @@ import { useTheme } from "@mui/material/styles";
 import { useDispatch } from "react-redux";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import dayjs, { Dayjs } from "dayjs";
 import {
 	DialogTitle,
 	DialogContent,
@@ -12,7 +13,6 @@ import {
 	MenuItem,
 	Typography,
 	Grid,
-	Select,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import Button from "./../shared/button/Button";
@@ -28,12 +28,58 @@ const OPTIONS = [
 ];
 
 function CreateTask() {
-	const [select, setSelect] = useState("");
+	const today = dayjs();
+	const tomorrow = dayjs().add(1, "day");
+
+	function convertDate(string) {
+		const date = String(string).split(" ");
+		const mnths = {
+			Jan: "01",
+			Feb: "02",
+			Mar: "03",
+			Apr: "04",
+			May: "05",
+			Jun: "06",
+			Jul: "07",
+			Aug: "08",
+			Sep: "09",
+			Oct: "10",
+			Nov: "11",
+			Dec: "12",
+		};
+		return [mnths[date[2]], date[1], date[3]].join("/");
+	}
+
+	convertDate(today);
+	const [taskName, setTaskName] = useState("");
+	const [priority, setPriority] = useState("");
+	const [dueDate, setDueDate] = useState("");
+	const [description, setDescription] = useState("");
 	const dispatch = useDispatch();
 	const theme = useTheme();
 
-	const handleChangeSelect = (event) => {
-		setSelect(event.target.value);
+	const handleChangeTaskName = (event) => {
+		setTaskName(event.target.value);
+	};
+	const handleChangePriority = (event) => {
+		setPriority(event.target.value);
+	};
+	const handleChangeDueDate = (selectDate) => {
+		setDueDate(convertDate(selectDate));
+	};
+	const handleChangeDescription = (event) => {
+		setDescription(event.target.value);
+	};
+
+	const TackDatails = {
+		taskName,
+		priority,
+		dueDate,
+		description,
+	};
+
+	const onSubmitAddTask = () => {
+		console.log(TackDatails);
 	};
 	return (
 		<Stack
@@ -63,7 +109,11 @@ function CreateTask() {
 							<FormLabel>
 								<Typography fontWeight="medium">Task Name</Typography>
 							</FormLabel>
-							<TextField required variant="outlined" />
+							<TextField
+								required
+								variant="outlined"
+								onChange={handleChangeTaskName}
+							/>
 						</Stack>
 						<Stack direction={"row"}>
 							<Grid container spacing={2}>
@@ -73,8 +123,8 @@ function CreateTask() {
 											<Typography fontWeight="medium">Task Priority</Typography>
 										</FormLabel>
 										<TextField
-											value={select}
-											onChange={handleChangeSelect}
+											value={priority}
+											onChange={handleChangePriority}
 											select
 										>
 											{OPTIONS.map((option) => (
@@ -91,7 +141,11 @@ function CreateTask() {
 											<Typography fontWeight="medium">Due Date</Typography>
 										</FormLabel>
 										<LocalizationProvider dateAdapter={AdapterDayjs}>
-											<DatePicker />
+											<DatePicker
+												defaultValue={today}
+												minDate={tomorrow}
+												onChange={handleChangeDueDate}
+											/>
 										</LocalizationProvider>
 									</Stack>
 								</Grid>
@@ -105,12 +159,18 @@ function CreateTask() {
 								required
 								variant="outlined"
 								placeholder="Type your content here...."
+								onChange={handleChangeDescription}
 								multiline
 								rows={3}
 							/>
 						</Stack>
 						<Stack justifyContent="flex-start" alignItems="flex-start">
-							<Button variant="contained" color="primary" size="large">
+							<Button
+								variant="contained"
+								color="primary"
+								size="large"
+								onClick={onSubmitAddTask}
+							>
 								Create Task
 							</Button>
 						</Stack>
