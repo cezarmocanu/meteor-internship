@@ -50,7 +50,6 @@ function CreateTask() {
 		return [mnths[date[2]], date[1], date[3]].join("/");
 	}
 
-	convertDate(today);
 	const [taskName, setTaskName] = useState("");
 	const [priority, setPriority] = useState("");
 	const [dueDate, setDueDate] = useState("");
