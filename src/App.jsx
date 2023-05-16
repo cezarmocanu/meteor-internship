@@ -7,10 +7,9 @@ import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ChangePasswordPage from "./pages/ChangePasswordPage";
 import LoginPage from "./pages/LoginPage";
 import WorkspacePage from "./pages/WorkspacePage";
-import AuthenticationPage from "./pages/AuthenticationPage";
 import PrivatePage from "./pages/PrivatePage";
 import WorkspacesCardsPage from "./pages/WorkspacesCardsPage";
-import { login } from "./store/slices/authentication-slice";
+import { initializeAuth } from "./store/slices/authentication-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectModal, closeModal } from "./store/slices/modal-slice";
 import RoutePaths from "./constants/route-paths";
@@ -18,20 +17,18 @@ import { Dialog } from "@mui/material";
 import ModalTypes from "./constants/modal-types";
 import TestContent1 from "./components/modal-content/TestContent1";
 import TestContent2 from "./components/modal-content/TestContent2";
-import Layout from "./components/Layout";
 import CreateTask from "./components/modal-content/CreateTask";
 import LogoutModal from "./components/modal-content/LogoutModal";
 import DeleteTaskModalContent from "./components/modal-content/DeleteTaskModalContent";
+import ProtectedRoute from "./utils/ProtectedRoute";
+import FadeIn from "./utils/FadeIn";
 
 function App() {
 	const dispatch = useDispatch();
 	const modalState = useSelector(selectModal);
 
 	useEffect(() => {
-		const token = localStorage.getItem("token");
-		if (token) {
-			dispatch(login());
-		}
+		dispatch(initializeAuth());
 	}, []);
 
 	return (
@@ -39,63 +36,85 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route
+						path={RoutePaths.LOGIN}
+						element={
+							<FadeIn>
+								<LoginPage />
+							</FadeIn>
+						}
+					/>
+					<Route
+						path={RoutePaths.SIGNUP}
+						element={
+							<FadeIn>
+								<SignUpPage />
+							</FadeIn>
+						}
+					/>
+					<Route
+						path={RoutePaths.FORGOT_PASSWORD}
+						element={
+							<FadeIn>
+								<ForgotPasswordPage />
+							</FadeIn>
+						}
+					/>
+					<Route
+						path={RoutePaths.CHANGE_PASSWORD}
+						element={
+							<FadeIn>
+								<ChangePasswordPage />
+							</FadeIn>
+						}
+					/>
+
+					<Route
 						path={RoutePaths.PRIVATE}
 						element={
-							<Layout>
+							<ProtectedRoute>
 								<PrivatePage />
-							</Layout>
+							</ProtectedRoute>
 						}
 					/>
 					<Route
 						path={RoutePaths.TEST}
 						element={
-							<Layout>
+							<ProtectedRoute>
 								<Test />
-							</Layout>
+							</ProtectedRoute>
 						}
 					/>
 					<Route
 						path={RoutePaths.WORKSPACE}
 						element={
-							<Layout>
+							<ProtectedRoute>
 								<WorkspacePage />
-							</Layout>
+							</ProtectedRoute>
 						}
 					/>
 					<Route
 						path={RoutePaths.TASKS}
 						element={
-							<Layout>
+							<ProtectedRoute>
 								<TasksPage />
-							</Layout>
+							</ProtectedRoute>
 						}
 					/>
 					<Route
 						exact
 						path={RoutePaths.ROOT}
 						element={
-							<Layout>
+							<ProtectedRoute>
 								<TasksPage />
-							</Layout>
+							</ProtectedRoute>
 						}
-					/>
-					<Route path={RoutePaths.AUTH} element={<AuthenticationPage />} />
-					<Route path={RoutePaths.LOGIN} element={<LoginPage />} />
-					<Route path={RoutePaths.SIGNUP} element={<SignUpPage />} />
-					<Route
-						path={RoutePaths.FORGOT_PASSWORD}
-						element={<ForgotPasswordPage />}
-					/>
-					<Route
-						path={RoutePaths.CHANGE_PASSWORD}
-						element={<ChangePasswordPage />}
 					/>
 					<Route
 						path={RoutePaths.WORKSPACES}
 						element={
-							<Layout>
+							<ProtectedRoute>
 								<WorkspacesCardsPage />
-							</Layout>
+							</ProtectedRoute>
 						}
 					/>
 				</Routes>

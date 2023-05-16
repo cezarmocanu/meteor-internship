@@ -1,19 +1,29 @@
-import * as React from "react";
-import { useState } from "react";
-import { Drawer, Button, Typography, Stack, Avatar } from "@mui/material";
+import React, { useState, useCallback } from "react";
+import { Drawer, Typography, Stack, Avatar, IconButton } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import Theme from "../theme";
+import { useTheme } from "@mui/material/styles";
 import SideBarItems from "./SideBarItems";
 import ModalTypes from "../constants/modal-types";
-import { useDispatch } from "react-redux";
 import { openModal } from "../store/slices/modal-slice";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
-const BASE_DRAWER_WIDTH = 72;
-const EXPANDED_DRAWER_WIDTH = 408;
+const BASE_DRAWER_WIDTH = 70;
+const EXPANDED_DRAWER_WIDTH = 400;
 
 function SideBar() {
-	const [isExpanded, setIsExpanded] = useState(false);
-	const dispatch = useDispatch();
+	const [isExpanded, setIsExpanded] = useState(
+		JSON.parse(localStorage.getItem("isExpanded"))
+	);
+	const theme = useTheme();
+
+	const handleExpandClick = useCallback(() => {
+		setIsExpanded((isExpanded) => {
+			const nextValue = !isExpanded;
+			localStorage.setItem("isExpanded", nextValue);
+			return nextValue;
+		});
+	}, [setIsExpanded]);
 
 	const handleLogoutClick = () => {
 		authService.logout();
@@ -28,6 +38,10 @@ function SideBar() {
 				width: isExpanded ? EXPANDED_DRAWER_WIDTH : BASE_DRAWER_WIDTH,
 				height: "100vh",
 				flexShrink: 0,
+				"& .MuiDrawer-paper": {
+					width: isExpanded ? EXPANDED_DRAWER_WIDTH : BASE_DRAWER_WIDTH,
+					boxSizing: "border-box",
+				},
 			}}
 		>
 			<Stack direction={"row"} height="100%">
@@ -36,18 +50,32 @@ function SideBar() {
 					spacing={2}
 					padding={2}
 					sx={{
-						backgroundColor: Theme.palette.primary.main,
+						backgroundColor: theme.palette.primary.main,
 					}}
 					alignItems="center"
 				>
-					<Button
-						color="success"
-						onClick={() => setIsExpanded((isExpanded) => !isExpanded)}
+					<IconButton
+						sx={{
+							color: theme.palette.secondary.contrastText,
+							backgroundColor: theme.palette.primary.main,
+							borderRadius: "25%",
+						}}
+						onClick={handleExpandClick}
+					>
+						{isExpanded ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+					</IconButton>
+					<Avatar sx={{ marginTop: 4, borderRadius: "25%" }} variant="rounded">
+						N
+					</Avatar>
+					<IconButton
+						sx={{
+							color: theme.palette.secondary.contrastText,
+							backgroundColor: theme.palette.primary.main,
+							borderRadius: "25%",
+						}}
 					>
 						<AddIcon />
-					</Button>
-					<Avatar sx={{ marginTop: 4 }}>N</Avatar>
-					<AddIcon />
+					</IconButton>
 				</Stack>
 				<Stack
 					sx={{
