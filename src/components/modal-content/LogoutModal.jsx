@@ -1,6 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { closeModal } from "../../store/slices/modal-slice";
+import { logout } from "../../store/slices/authentication-slice";
+import { useNavigate } from "react-router-dom";
+
 import {
 	DialogTitle,
 	DialogContent,
@@ -8,9 +10,21 @@ import {
 	DialogActions,
 	Button,
 } from "@mui/material";
+import authService from "../../services/auth-service";
+import { closeModal } from "../../store/slices/modal-slice";
+import RoutePaths from "../../constants/route-paths";
 
 function LogoutModal() {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	const handleLogoutClick = () => {
+		authService.logout().then((_) => {
+			dispatch(logout());
+			dispatch(closeModal());
+			navigate(RoutePaths.LOGIN);
+		});
+	};
 
 	return (
 		<>
@@ -32,7 +46,7 @@ function LogoutModal() {
 				<Button
 					variant="contained"
 					color="secondary"
-					onClick={() => dispatch(closeModal())}
+					onClick={handleLogoutClick}
 				>
 					Logout
 				</Button>

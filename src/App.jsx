@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route, BrowserRouter, useNavigate } from "react-router-dom";
 import Test from "./pages/TestPage";
 import TasksPage from "./pages/TasksPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -10,7 +10,7 @@ import WorkspacePage from "./pages/WorkspacePage";
 import PrivatePage from "./pages/PrivatePage";
 import WorkspacesCardsPage from "./pages/WorkspacesCardsPage";
 import SettingsPage from "./pages/SettingsPage";
-import { initializeAuth } from "./store/slices/authentication-slice";
+import { initializeAuth, logout } from "./store/slices/authentication-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectModal, closeModal } from "./store/slices/modal-slice";
 import RoutePaths from "./constants/route-paths";
@@ -136,15 +136,18 @@ function App() {
 						}
 					/>
 				</Routes>
-			</BrowserRouter>
 
-			<Dialog open={Boolean(modalState)} onClose={() => dispatch(closeModal())}>
-				{modalState === ModalTypes.TEST && <TestContent1 />}
-				{modalState === ModalTypes.TEST2 && <TestContent2 />}
-				{modalState === ModalTypes.CREATE_TASK && <CreateTask />}
-				{modalState === ModalTypes.LOGOUT && <LogoutModal />}
-				{modalState === ModalTypes.DELETE_TASK && <DeleteTaskModalContent />}
-			</Dialog>
+				<Dialog
+					open={Boolean(modalState)}
+					onClose={() => dispatch(closeModal())}
+				>
+					{modalState === ModalTypes.TEST && <TestContent1 />}
+					{modalState === ModalTypes.TEST2 && <TestContent2 />}
+					{modalState === ModalTypes.CREATE_TASK && <CreateTask />}
+					{modalState === ModalTypes.LOGOUT && <LogoutModal />}
+					{modalState === ModalTypes.DELETE_TASK && <DeleteTaskModalContent />}
+				</Dialog>
+			</BrowserRouter>
 		</>
 	);
 }

@@ -46,12 +46,6 @@ function Test() {
 	const theme = useTheme();
 
 	const navigate = useNavigate();
-	const handleLogoutClick = () => {
-		authService.logout().then((_) => {
-			dispatch(logout());
-			navigate(RoutePaths.LOGIN);
-		});
-	};
 
 	const [workspaces, setWorkspaces] = useState([]);
 
@@ -80,9 +74,6 @@ function Test() {
 					DeleteModalContent
 				</Button>
 
-				<Button variant="contained" color="primary" onClick={handleLogoutClick}>
-					Log out
-				</Button>
 				<Button
 					variant="contained"
 					onClick={() => {
