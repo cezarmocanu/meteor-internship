@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { Typography, Stack, Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
@@ -25,12 +25,22 @@ function LoginPage() {
 		password: "",
 	});
 
+	const [isChecked, setIsChecked] = useState(false);
+
 	const onTextFieldChange = (e) => {
 		setLoginData((prevState) => ({
 			...prevState,
 			[e.target.name]: e.target.value,
 		}));
 	};
+
+	const handleRememberCheck = useCallback(() => {
+		setIsChecked((isChecked) => {
+			const nextValue = !isChecked;
+			localStorage.setItem("isChecked", nextValue);
+			return nextValue;
+		});
+	}, [setIsChecked]);
 
 	const handleLoginClick = () => {
 		authService
@@ -39,10 +49,18 @@ function LoginPage() {
 				if (!loggedInWithSuccess) {
 					return;
 				}
-
 				dispatch(login());
 				navigate(RoutePaths.TEST);
 			});
+	};
+	const handleRememberMe = () => {
+		handleRememberCheck();
+		const email = loginData.username;
+		const user = localStorage.setItem(
+			"username",
+			isChecked !== true ? email : ""
+		);
+		console.log(email);
 	};
 
 	return (
@@ -87,7 +105,10 @@ function LoginPage() {
 								/>
 							</Stack>
 							<FormControlLabel
-								control={<Checkbox checked={false} />}
+								control={<Checkbox />}
+								name="checkbox"
+								value={loginData.checkbox}
+								onClick={handleRememberMe}
 								label={<Typography fontWeight="bold"> Remember me</Typography>}
 							/>
 						</Stack>
