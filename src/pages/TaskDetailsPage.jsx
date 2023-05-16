@@ -2,7 +2,6 @@ import React from "react";
 import TaskDetailsCard from "../components/TaskDetailsCard";
 import { Container, Button } from "@mui/material";
 import AssignmentReturnSharpIcon from "@mui/icons-material/AssignmentReturnSharp";
-import RoutePaths from "../constants/route-paths";
 
 function TaskDetailsPage() {
 	return (

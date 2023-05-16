@@ -24,6 +24,9 @@ import DeleteTaskModalContent from "./components/modal-content/DeleteTaskModalCo
 import TaskDetailsPage from "./pages/TaskDetailsPage";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import FadeIn from "./utils/FadeIn";
+import ProtectedRoute from "./utils/ProtectedRoute";
+import FadeIn from "./utils/FadeIn";
+import TaskDetailsPage from "./pages/TaskDetailsPage";
 
 function App() {
 	const dispatch = useDispatch();
