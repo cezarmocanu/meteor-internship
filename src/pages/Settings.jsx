@@ -10,14 +10,14 @@ export default function Settings() {
     const EMAIL = 'hohndoe@gmail.com'
   return (
     <>
-    <Stack sx={{ width: '65%', padding: 4}}>
+    <Stack sx={{height: '100%', padding: 4, backgroundColor: '#E5E5E5'}}>
             <Typography sx={{fontSize: '1.5rem'}} variant="h6" component="h3">
 					Settings
 			</Typography>
             <Typography sx={{fontSize: '0.8rem', marginTop: '2rem'}} variant="h6" component="h6">
 					Account Settings
 			</Typography>
-            <Stack sx={{display: 'flex', padding: 4, marginTop: '1rem', borderRadius: '12px', backgroundColor: '#FFFFFF'}}>               
+            <Stack sx={{width: '62%', display: 'flex', padding: 4, marginTop: '1rem', borderRadius: '12px', backgroundColor: '#FFFFFF'}}>               
                 <Box sx={{border: 1, padding: 1, borderColor: 'grey.500', borderRadius: '12px', display: 'flex', flexDirection: 'row'}}>
                     <Stack direction="row" sx={{flexDirection: 'flex', marginTop: '0.7rem'}}>
 					<ContainedImage src={"/profile.svg"} sx={{ width: 50, height: 30 }} />
@@ -55,7 +55,7 @@ export default function Settings() {
                         </Stack>
                 </Box>
             </Stack>
-            <Stack direction="row" sx={{width: '95%', display: 'flex', justifyContent: 'flex-end', marginTop: '2rem'}}>
+            <Stack direction="row" sx={{width: '62%', display: 'flex', justifyContent: 'flex-end', marginTop: '2rem'}}>
 				<Button 
                     size="medium" 
                     variant="contained" 
