@@ -27,7 +27,7 @@ const MENU_ITEMS = [
 	{
 		text: "Settings",
 		Icon: SettingsIcon,
-		route: RoutePaths.TEST,
+		route: RoutePaths.SETTINGS,
 	},
 ];
 
