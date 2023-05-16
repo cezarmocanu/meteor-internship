@@ -51,8 +51,9 @@ function SideBarItems() {
 			)),
 		[MENU_ITEMS]
 	);
-
-	return <List>{items}</List>;
+	if (JSON.parse(localStorage.getItem("isExpanded")) === true) {
+		return <List>{items}</List>;
+	}
 }
 
 export default SideBarItems;
