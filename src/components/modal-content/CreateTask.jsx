@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, useMemo, useForm } from "react";
 import { useTheme } from "@mui/material/styles";
-import { useDispatch } from "react-redux";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs, { Dayjs } from "dayjs";
@@ -22,63 +21,30 @@ import DatePicker from "./../shared/date-picker/DatePicker";
 import { closeModal } from "../../store/slices/modal-slice";
 
 const OPTIONS = [
-	{ label: "Low", id: 1 },
-	{ label: "Medium", id: 2 },
-	{ label: "High", id: 3 },
+	{ value: "Low", id: 1 },
+	{ value: "Medium", id: 2 },
+	{ value: "High", id: 3 },
 ];
 
 function CreateTask() {
-	const today = dayjs();
-	const tomorrow = dayjs().add(1, "day");
-
-	function convertDate(string) {
-		const date = String(string).split(" ");
-		const mnths = {
-			Jan: "01",
-			Feb: "02",
-			Mar: "03",
-			Apr: "04",
-			May: "05",
-			Jun: "06",
-			Jul: "07",
-			Aug: "08",
-			Sep: "09",
-			Oct: "10",
-			Nov: "11",
-			Dec: "12",
-		};
-		return [mnths[date[2]], date[1], date[3]].join("/");
-	}
-
-	const [taskName, setTaskName] = useState("");
-	const [priority, setPriority] = useState("");
-	const [dueDate, setDueDate] = useState("");
-	const [description, setDescription] = useState("");
-	const dispatch = useDispatch();
 	const theme = useTheme();
+	const today = useMemo(() => dayjs());
+	const tomorrow = useMemo(() => today.add(1, "day"));
+	const [formState, setFormState] = useState({
+		taskName: "",
+		priority: "",
+		dueDate: "",
+		description: "",
+	});
 
-	const handleChangeTaskName = (event) => {
-		setTaskName(event.target.value);
+	const handleFieldChange = (event) => {
+		setFormState({ ...formState, [event.target.name]: event.target.value });
 	};
-	const handleChangePriority = (event) => {
-		setPriority(event.target.value);
+	const handleChangeDueDate = (selectedDate) => {
+		setFormState({ ...formState, dueDate: selectedDate.toDate() });
 	};
-	const handleChangeDueDate = (selectDate) => {
-		setDueDate(convertDate(selectDate));
-	};
-	const handleChangeDescription = (event) => {
-		setDescription(event.target.value);
-	};
-
-	const TackDatails = {
-		taskName,
-		priority,
-		dueDate,
-		description,
-	};
-
 	const onSubmitAddTask = () => {
-		console.log(TackDatails);
+		console.log(formState);
 	};
 	return (
 		<Stack
@@ -94,10 +60,7 @@ function CreateTask() {
 		>
 			<Stack sx={{ width: "100%" }}>
 				<DialogActions sx={{ paddingBottom: 0 }}>
-					<IconButton
-						onClick={() => dispatch(closeModal())}
-						color="theme.text.primary"
-					>
+					<IconButton onClick={closeModal} color="theme.text.primary">
 						<CloseIcon />
 					</IconButton>
 				</DialogActions>
@@ -111,7 +74,8 @@ function CreateTask() {
 							<TextField
 								required
 								variant="outlined"
-								onChange={handleChangeTaskName}
+								name="taskName"
+								onChange={handleFieldChange}
 							/>
 						</Stack>
 						<Stack direction={"row"}>
@@ -122,14 +86,17 @@ function CreateTask() {
 											<Typography fontWeight="medium">Task Priority</Typography>
 										</FormLabel>
 										<TextField
-											value={priority}
-											onChange={handleChangePriority}
 											select
+											name="priority"
+											SelectProps={{
+												native: true,
+											}}
+											onChange={handleFieldChange}
 										>
 											{OPTIONS.map((option) => (
-												<MenuItem key={option.label} value={option.label}>
-													{option.label}
-												</MenuItem>
+												<option key={option.value} value={option.value}>
+													{option.value}
+												</option>
 											))}
 										</TextField>
 									</Stack>
@@ -158,7 +125,8 @@ function CreateTask() {
 								required
 								variant="outlined"
 								placeholder="Type your content here...."
-								onChange={handleChangeDescription}
+								name="description"
+								onChange={handleFieldChange}
 								multiline
 								rows={3}
 							/>
