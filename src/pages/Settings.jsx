@@ -10,7 +10,7 @@ export default function Settings() {
     const EMAIL = 'hohndoe@gmail.com'
   return (
     <>
-    <Stack sx={{height: '100%', padding: 4, backgroundColor: '#E5E5E5'}}>
+    <Stack sx={{height: '100%', padding: 4, backgroundColor: '#F6F8FD'}}>
             <Typography sx={{fontSize: '1.5rem'}} variant="h6" component="h3">
 					Settings
 			</Typography>
