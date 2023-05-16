@@ -10,9 +10,21 @@ import {
 	DialogActions,
 	Button,
 } from "@mui/material";
+import authService from "../../services/auth-service";
+import { closeModal } from "../../store/slices/modal-slice";
+import RoutePaths from "../../constants/route-paths";
 
 function LogoutModal() {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	const handleLogoutClick = () => {
+		authService.logout().then((_) => {
+			dispatch(logout());
+			dispatch(closeModal());
+			navigate(RoutePaths.LOGIN);
+		});
+	};
 
 	return (
 		<>
@@ -34,8 +46,7 @@ function LogoutModal() {
 				<Button
 					variant="contained"
 					color="secondary"
-					onClick={() => dispatch(logout())}
-					href="/signup"
+					onClick={handleLogoutClick}
 				>
 					Logout
 				</Button>

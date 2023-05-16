@@ -1,5 +1,12 @@
 import React, { useState, useCallback } from "react";
-import { Drawer, Typography, Stack, Avatar, IconButton } from "@mui/material";
+import {
+	Drawer,
+	Typography,
+	Stack,
+	Avatar,
+	IconButton,
+	Button,
+} from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { useTheme } from "@mui/material/styles";
 import SideBarItems from "./SideBarItems";
@@ -7,11 +14,13 @@ import ModalTypes from "../constants/modal-types";
 import { openModal } from "../store/slices/modal-slice";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { useDispatch } from "react-redux";
 
 const BASE_DRAWER_WIDTH = 70;
 const EXPANDED_DRAWER_WIDTH = 400;
 
 function SideBar() {
+	const dispatch = useDispatch();
 	const [isExpanded, setIsExpanded] = useState(
 		JSON.parse(localStorage.getItem("isExpanded"))
 	);
@@ -24,11 +33,6 @@ function SideBar() {
 			return nextValue;
 		});
 	}, [setIsExpanded]);
-
-	const handleLogoutClick = () => {
-		authService.logout();
-		navigate(RoutePaths.LOGIN);
-	};
 
 	return (
 		<Drawer
