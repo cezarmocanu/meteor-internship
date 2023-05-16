@@ -22,11 +22,8 @@ import CreateTask from "./components/modal-content/CreateTask";
 import LogoutModal from "./components/modal-content/LogoutModal";
 import DeleteTaskModalContent from "./components/modal-content/DeleteTaskModalContent";
 import TaskDetailsPage from "./pages/TaskDetailsPage";
-import ProtectedRoute from "./utils/ProtectedRoute";
 import FadeIn from "./utils/FadeIn";
 import ProtectedRoute from "./utils/ProtectedRoute";
-import FadeIn from "./utils/FadeIn";
-import TaskDetailsPage from "./pages/TaskDetailsPage";
 
 function App() {
 	const dispatch = useDispatch();
