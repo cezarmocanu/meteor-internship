@@ -9,7 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import WorkspacePage from "./pages/WorkspacePage";
 import PrivatePage from "./pages/PrivatePage";
 import WorkspacesCardsPage from "./pages/WorkspacesCardsPage";
-import Settings from './pages/Settings'
+import SettingsPage from "./pages/SettingsPage";
 import { initializeAuth } from "./store/slices/authentication-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectModal, closeModal } from "./store/slices/modal-slice";
@@ -122,7 +122,7 @@ function App() {
 						path={RoutePaths.SETTINGS}
 						element={
 							<ProtectedRoute>
-								<Settings />
+								<SettingsPage />
 							</ProtectedRoute>
 						}
 					/>
