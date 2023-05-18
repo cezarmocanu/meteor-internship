@@ -69,7 +69,7 @@ function EditTask() {
 						<CloseIcon />
 					</IconButton>
 				</DialogActions>
-				<DialogTitle sx={{ paddingTop: 0 }}>Create Task</DialogTitle>
+				<DialogTitle sx={{ paddingTop: 0 }}>Edit Task</DialogTitle>
 				<DialogContent>
 					<Stack gap={2}>
 						<Stack gap={1}>
