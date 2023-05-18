@@ -20,6 +20,8 @@ import TextField from "./../shared/input/TextField";
 import DatePicker from "./../shared/date-picker/DatePicker";
 import { closeModal } from "../../store/slices/modal-slice";
 import { useDispatch } from "react-redux";
+import { useFormik } from "formik";
+import * as yup from "yup";
 
 const OPTIONS = [
 	{ value: "Low", id: 1 },
@@ -31,23 +33,53 @@ function CreateTask() {
 	const theme = useTheme();
 	const today = useMemo(() => dayjs());
 	const tomorrow = useMemo(() => today.add(1, "day"));
+	//const tomorrow = useMemo(() => new Date().toISOString());
 	const dispatch = useDispatch();
-	const [formState, setFormState] = useState({
+
+	const INITIAL_VALUES = {
 		taskName: "",
 		priority: "",
-		dueDate: "",
+		dueDate: { tomorrow },
 		description: "",
+	};
+
+	const validationSchema = yup.object({
+		taskName: yup.string("Enter Task Name").required("Task Name is required"),
+		priority: yup
+			.string("Enter Task Priority")
+			.required("Task Priority is required"),
+		dueDate: yup.string("Enter Due Date").required("Due Date is required"),
+		description: yup
+			.string("Enter Task Description")
+			.required("Task Descriptio is required"),
 	});
 
-	const handleFieldChange = (event) => {
-		setFormState({ ...formState, [event.target.name]: event.target.value });
+	const onSubmit = (values) => {
+		console.log(values);
 	};
-	const handleChangeDueDate = (selectedDate) => {
-		setFormState({ ...formState, dueDate: selectedDate.toDate() });
-	};
-	const onSubmitAddTask = () => {
-		console.log(formState);
-	};
+
+	const formik = useFormik({
+		initialValues: { taskName: "", priority: "", dueDate: "", description: "" },
+		// validationSchema,
+		onSubmit,
+	});
+
+	// const [formState, setFormState] = useState({
+	// 	taskName: "",
+	// 	priority: "",
+	// 	dueDate: "",
+	// 	description: "",
+	// });
+
+	// const handleFieldChange = (event) => {
+	// 	setFormState({ ...formState, [event.target.name]: event.target.value });
+	// };
+	// const handleChangeDueDate = (selectedDate) => {
+	// 	setFormState({ ...formState, dueDate: selectedDate.toDate() });
+	// };
+	// const onSubmitAddTask = () => {
+	// 	console.log(formState);
+	// };
 	return (
 		<Stack
 			sx={{
@@ -70,7 +102,7 @@ function CreateTask() {
 					</IconButton>
 				</DialogActions>
 				<DialogTitle sx={{ paddingTop: 0 }}>Create Task</DialogTitle>
-				<DialogContent>
+				<DialogContent onSubmit={formik.handleSubmit}>
 					<Stack gap={2}>
 						<Stack gap={1}>
 							<FormLabel>
@@ -80,7 +112,8 @@ function CreateTask() {
 								required
 								variant="outlined"
 								name="taskName"
-								onChange={handleFieldChange}
+								onChange={formik.handleChange}
+								value={formik.values.taskName}
 							/>
 						</Stack>
 						<Stack direction={"row"}>
@@ -93,8 +126,9 @@ function CreateTask() {
 										<TextField
 											select
 											name="priority"
-											value={formState.priority}
-											onChange={handleFieldChange}
+											// value={formState.priority}
+											onChange={formik.handleChange}
+											value={formik.values.priority}
 										>
 											{OPTIONS.map((option) => (
 												<MenuItem key={option.value} value={option.value}>
@@ -112,8 +146,14 @@ function CreateTask() {
 										<LocalizationProvider dateAdapter={AdapterDayjs}>
 											<DatePicker
 												defaultValue={tomorrow}
-												minDate={tomorrow}
-												onChange={handleChangeDueDate}
+												// selected={
+												// 	(field.value && new Date(field.value)) || null
+												// }
+												// onChange={(val) => {
+												// 	setFieldValue(field.name, val);
+												// }}
+												// mode="date"
+												// minDate={tomorrow.toString()}
 											/>
 										</LocalizationProvider>
 									</Stack>
@@ -129,7 +169,8 @@ function CreateTask() {
 								variant="outlined"
 								placeholder="Type your content here...."
 								name="description"
-								onChange={handleFieldChange}
+								onChange={formik.handleChange}
+								value={formik.values.description}
 								multiline
 								rows={3}
 							/>
@@ -139,7 +180,7 @@ function CreateTask() {
 								variant="contained"
 								color="primary"
 								size="large"
-								onClick={onSubmitAddTask}
+								onClick={formik.handleSubmit}
 							>
 								Create Task
 							</Button>
