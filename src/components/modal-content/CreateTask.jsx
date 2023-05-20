@@ -48,7 +48,7 @@ function CreateTask() {
 
 	const formik = useFormik({
 		initialValues: INITIAL_VALUES,
-		validation,
+		validationSchema,
 		onSubmit,
 	});
 
@@ -81,6 +81,7 @@ function CreateTask() {
 								<Typography fontWeight="medium">Task Name</Typography>
 							</FormLabel>
 							<TextField
+								required
 								variant="outlined"
 								name="taskName"
 								onChange={formik.handleChange}
@@ -90,7 +91,6 @@ function CreateTask() {
 									formik.touched.taskName && Boolean(formik.errors.taskName)
 								}
 								helperText={formik.touched.taskName && formik.errors.taskName}
-								required
 							/>
 						</Stack>
 						<Stack direction={"row"}>
@@ -113,7 +113,6 @@ function CreateTask() {
 											helperText={
 												formik.touched.priority && formik.errors.priority
 											}
-											required
 										>
 											{OPTIONS.map((option) => (
 												<MenuItem key={option.value} value={option.value}>
@@ -132,6 +131,8 @@ function CreateTask() {
 											<DatePicker
 												defaultValue={tomorrow}
 												minDate={tomorrow}
+												onBlur={formik.handleBlur}
+												// value={formik.values.dueDate}
 												error={
 													formik.touched.dueDate &&
 													Boolean(formik.errors.dueDate)
@@ -139,7 +140,6 @@ function CreateTask() {
 												helperText={
 													formik.touched.dueDate && formik.errors.dueDate
 												}
-												required
 											/>
 										</LocalizationProvider>
 									</Stack>
@@ -187,11 +187,21 @@ function CreateTask() {
 	);
 }
 
-const validation = yup.object({
-	taskName: yup.string().required("Task Name is required"),
-	priority: yup.string().required("Task Priority is required"),
-	dueDate: yup.string().required("Due Date is required"),
-	description: yup.string().required("Task Descriptio is required"),
+const validationSchema = yup.object({
+	taskName: yup.string("Enter Task Name").required("Task Name is required"),
+	priority: yup
+		.string("Enter Task Priority")
+		.required("Task Priority is required"),
+	// dueDate: yup
+	// 	.string()
+	// 	.nullable()
+	// 	.test(function (value) {
+	// 		return value <= dayjs().add(1, "day");
+	// 	})
+	// 	.required("Task Priority is required"),
+	description: yup
+		.string("Enter Task Description")
+		.required("Task Descriptio is required"),
 });
 
 export default CreateTask;
