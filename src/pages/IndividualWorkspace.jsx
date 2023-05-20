@@ -1,4 +1,8 @@
 import React from "react";
+import { Route } from 'react-router-dom';
+import RoutePaths from './path/to/RoutePaths';
+import IndividualWorkspace from './path/to/IndividualWorkspace';
+
 
 const IndividualWorkspace = () => {
   return (

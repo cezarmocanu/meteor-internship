@@ -138,7 +138,7 @@ function App() {
 						}
 					/>
 					<Route
-						path={RoutePaths.WORKSPACES}
+						path={RoutePaths.INDIVIDUAL_WORKSPACE}
 						element={
 							<ProtectedRoute>
 								<IndividualWorkspace />
