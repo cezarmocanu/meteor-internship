@@ -59,13 +59,12 @@ const TasksMockPage = () => {
 		return data
 			.filter((item) => (status ? item.status === status : true))
 			.map((item) => (
-				<Grid item xs={4} margin={2} direction="row">
+				<Grid item xs={4} margin={2} key={item.id}>
 					<TaskCardComponent
 						title={item.title}
 						content={item.content}
 						buttonText="View Task"
 						status={item.status}
-						id={item.id}
 					/>
 				</Grid>
 			));
