@@ -82,6 +82,7 @@ function CreateTask() {
 							</FormLabel>
 							<TextField
 								required
+								size="small"
 								variant="outlined"
 								name="taskName"
 								onChange={formik.handleChange}
@@ -102,6 +103,7 @@ function CreateTask() {
 										</FormLabel>
 										<TextField
 											select
+											size="small"
 											name="priority"
 											onChange={formik.handleChange}
 											onBlur={formik.handleBlur}
@@ -129,6 +131,7 @@ function CreateTask() {
 										</FormLabel>
 										<LocalizationProvider dateAdapter={AdapterDayjs}>
 											<DatePicker
+												slotProps={{ textField: { size: "small" } }}
 												defaultValue={tomorrow}
 												minDate={tomorrow}
 												onBlur={formik.handleBlur}
@@ -153,6 +156,7 @@ function CreateTask() {
 							<TextField
 								required
 								variant="outlined"
+								size="small"
 								placeholder="Type your content here...."
 								name="description"
 								onChange={formik.handleChange}
@@ -166,7 +170,7 @@ function CreateTask() {
 									formik.touched.description && formik.errors.description
 								}
 								multiline
-								rows={3}
+								rows={4}
 							/>
 						</Stack>
 						<Stack justifyContent="flex-start" alignItems="flex-start">
