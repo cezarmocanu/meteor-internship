@@ -106,6 +106,14 @@ function CreateTask() {
 											onChange={formik.handleChange}
 											onBlur={formik.handleBlur}
 											value={formik.values.priority}
+											error={
+												formik.touched.priority &&
+												Boolean(formik.errors.priority)
+											}
+											helperText={
+												formik.touched.priority && formik.errors.priority
+											}
+											required
 										>
 											{OPTIONS.map((option) => (
 												<MenuItem key={option.value} value={option.value}>
@@ -113,11 +121,6 @@ function CreateTask() {
 												</MenuItem>
 											))}
 										</TextField>
-										{formik.touched.priority && formik.errors.priority ? (
-											<Typography className="error">
-												{formik.errors.priority}
-											</Typography>
-										) : null}
 									</Stack>
 								</Grid>
 								<Grid item xs={6}>
@@ -126,7 +129,18 @@ function CreateTask() {
 											<Typography fontWeight="medium">Due Date</Typography>
 										</FormLabel>
 										<LocalizationProvider dateAdapter={AdapterDayjs}>
-											<DatePicker defaultValue={tomorrow} minDate={tomorrow} />
+											<DatePicker
+												defaultValue={tomorrow}
+												minDate={tomorrow}
+												error={
+													formik.touched.dueDate &&
+													Boolean(formik.errors.dueDate)
+												}
+												helperText={
+													formik.touched.dueDate && formik.errors.dueDate
+												}
+												required
+											/>
 										</LocalizationProvider>
 									</Stack>
 								</Grid>
@@ -144,14 +158,16 @@ function CreateTask() {
 								onChange={formik.handleChange}
 								onBlur={formik.handleBlur}
 								value={formik.values.description}
+								error={
+									formik.touched.description &&
+									Boolean(formik.errors.description)
+								}
+								helperText={
+									formik.touched.description && formik.errors.description
+								}
 								multiline
 								rows={3}
 							/>
-							{formik.touched.description && formik.errors.description ? (
-								<Typography className="error">
-									{formik.errors.description}
-								</Typography>
-							) : null}
 						</Stack>
 						<Stack justifyContent="flex-start" alignItems="flex-start">
 							<Button
@@ -172,14 +188,10 @@ function CreateTask() {
 }
 
 const validation = yup.object({
-	taskName: yup.string("Enter Task Name").required("Task Name is required"),
-	priority: yup
-		.string("Enter Task Priority")
-		.required("Task Priority is required"),
-	dueDate: yup.string("Enter Due Date").required("Due Date is required"),
-	description: yup
-		.string("Enter Task Description")
-		.required("Task Descriptio is required"),
+	taskName: yup.string().required("Task Name is required"),
+	priority: yup.string().required("Task Priority is required"),
+	dueDate: yup.string().required("Due Date is required"),
+	description: yup.string().required("Task Descriptio is required"),
 });
 
 export default CreateTask;
