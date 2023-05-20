@@ -137,6 +137,9 @@ function App() {
 							</ProtectedRoute>
 						}
 					/>
+					<Route
+						path={/Workspaces.WorkspaceID}
+						element={<IndividualWorkspace />}
 				</Routes>
 
 				<Dialog
