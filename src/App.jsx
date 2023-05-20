@@ -138,8 +138,13 @@ function App() {
 						}
 					/>
 					<Route
-						path={/Workspaces.WorkspaceID}
-						element={<IndividualWorkspace />}
+						path={RoutePaths.WORKSPACES}
+						element={
+							<ProtectedRoute>
+								<IndividualWorkspace />
+							</ProtectedRoute>
+						}
+					/>		
 				</Routes>
 
 				<Dialog
