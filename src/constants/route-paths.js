@@ -12,7 +12,7 @@ const RoutePaths = {
 	WORKSPACES: "/workspaces",
 	SETTINGS: "/settings",
 	TASK_DETAILS: "/task-details",
-	INDIVIDUAL_WORKSPACE: "/workspaces",
+	INDIVIDUAL_WORKSPACE: "/individual-workspace",
 
 };
 
