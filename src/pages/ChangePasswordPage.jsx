@@ -38,53 +38,7 @@ function ChangePasswordPage() {
 					Your account has been recovered. Enter your new password to gain full
 					control of your account
 				</Typography>
-				<Stack
-					sx={{
-						width: "20rem",
-						maxWidth: "100%",
-					}}
-				>
-					<FormLabel>Password</FormLabel>
-					<TextField
-						InputProps={{
-							endAdornment: (
-								<InputAdornment position="end">
-									<VisibilityOutlinedIcon />
-								</InputAdornment>
-							),
-						}}
-						type="password"
-						required
-						size="small"
-						variant="outlined"
-					/>
-				</Stack>
-				<Stack
-					sx={{
-						width: "20rem",
-						maxWidth: "100%",
-					}}
-				>
-					<FormLabel>Confirm Password</FormLabel>
-					<TextField
-						InputProps={{
-							endAdornment: (
-								<InputAdornment position="end">
-									<VisibilityOutlinedIcon />
-								</InputAdornment>
-							),
-						}}
-						type="password"
-						required
-						size="small"
-						variant="outlined"
-					/>
-				</Stack>
-				<Stack alignItems="flex-start">
-					<Button size="medium" variant="contained">
-						<Typography variant="button">Save</Typography>
-					</Button>
-				</Stack>
+				
 			</Stack>
 		</Box>
 	);
