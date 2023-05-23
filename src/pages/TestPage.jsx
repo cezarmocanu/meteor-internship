@@ -40,6 +40,7 @@ import { useNavigate } from "react-router-dom";
 import RoutePaths from "../constants/route-paths";
 import { logout } from "../store/slices/authentication-slice";
 import NoTasksPlaceholder from "../components/widget/NoTasksPlaceholder";
+import AvatarComponent from "../components/AvatarComponent";
 
 function Test() {
 	const dispatch = useDispatch();
@@ -875,6 +876,7 @@ function Test() {
 					}}
 				/>
 			</Box>
+			<AvatarComponent />
 		</Box>
 	);
 }
