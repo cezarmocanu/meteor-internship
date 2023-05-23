@@ -55,6 +55,20 @@ function Test() {
 		});
 	}, []);
 
+		const [workspaceName,setWorkspaceName] = useState({
+			name:"",
+			description:"",
+		});
+		
+		const onTextFieldChange = (e) => {
+				setWorkspaceName((prevState)=>({
+				...prevState,
+			[e.target.name]: e.taget.value,
+			}));
+		};
+		const handleCreateWorkspaceClick = () =>	{
+			
+		}
 	return (
 		<Box style={{ backgroundColor: "whitesmoke" }}>
 			<Container>
@@ -90,7 +104,6 @@ function Test() {
 				>
 					Open modal test 2
 				</Button>
-
 				<Button
 					variant="contained"
 					onClick={() => {
@@ -108,6 +121,24 @@ function Test() {
 				>
 					CreateTask
 				</Button>
+				<Stack sx={{
+					display:"flex",
+					flexDirection:"column",
+				}}>
+					<TextField
+					name="title"
+					variant="outlined"
+					onChange={onTextFieldChange}
+					/>
+				<Button
+					variant="contained"
+					onClick={()=>{ 
+						handleCreateWorkspaceClick;
+					}}
+					> Create Workspace
+					</Button>
+					
+				</Stack>
 				<TestCounter />
 				<TestCounter />
 				<Typography variant="h2" gutterBottom>
