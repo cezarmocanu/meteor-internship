@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useMemo } from "react";
 import { Typography, Stack, Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
@@ -21,10 +21,9 @@ function LoginPage() {
 	const dispatch = useDispatch();
 
 	const [loginData, setLoginData] = useState({
-		username: "",
+		username: localStorage.username || "",
 		password: "",
 	});
-
 	const [isChecked, setIsChecked] = useState(false);
 
 	const onTextFieldChange = (e) => {
@@ -53,15 +52,20 @@ function LoginPage() {
 				navigate(RoutePaths.TEST);
 			});
 	};
-	const handleRememberMe = () => {
-		handleRememberCheck();
+	useEffect(() => {
 		const email = loginData.username;
 		const user = localStorage.setItem(
 			"username",
-			isChecked !== true ? email : ""
+			isChecked === true ? email : ""
 		);
-		console.log(email);
-	};
+		const savedEmail = localStorage.getItem("username");
+	}),
+		[loginData];
+
+	useEffect(() => {
+		const getCheck = JSON.parse(localStorage.getItem("isChecked"));
+		setIsChecked(getCheck);
+	}, []);
 
 	return (
 		<Stack sx={{ width: "100%", height: "100vh" }}>
@@ -105,10 +109,16 @@ function LoginPage() {
 								/>
 							</Stack>
 							<FormControlLabel
-								control={<Checkbox />}
-								name="checkbox"
-								value={loginData.checkbox}
-								onClick={handleRememberMe}
+								style={{ pointerEvents: "none" }}
+								control={
+									<Checkbox
+										onClick={handleRememberCheck}
+										style={{ pointerEvents: "auto" }}
+										checked={isChecked}
+										name="checkbox"
+										value={loginData.checkbox}
+									/>
+								}
 								label={<Typography fontWeight="bold"> Remember me</Typography>}
 							/>
 						</Stack>
