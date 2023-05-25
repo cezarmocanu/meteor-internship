@@ -65,8 +65,12 @@ function Test() {
 					name: `${e.target.value}`,
 					description:`Workspace with ${e.target.value} name.`
 				})
+				console.log(workspaceState);
+
 		};
+		
 		const handleCreateWorkspaceClick = () =>	{
+			console.log(workspaceState);
 				workspaceService
 				.postWorkspaces(workspaceState)
 				.then((sentWithSucces) => {
@@ -139,9 +143,7 @@ function Test() {
 					/>
 				<Button
 					variant="contained"
-					onClick={()=>{ 
-						handleCreateWorkspaceClick;
-					}}
+					onClick={handleCreateWorkspaceClick}
 					> Create Workspace
 					</Button>
 					
