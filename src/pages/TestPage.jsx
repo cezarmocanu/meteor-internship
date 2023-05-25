@@ -40,7 +40,6 @@ import { useNavigate } from "react-router-dom";
 import RoutePaths from "../constants/route-paths";
 import { logout } from "../store/slices/authentication-slice";
 import NoTasksPlaceholder from "../components/widget/NoTasksPlaceholder";
-import createWorkspace from "../services/create-workspace-service";
 
 function Test() {
 	const dispatch = useDispatch();
@@ -56,20 +55,20 @@ function Test() {
 		});
 	}, []);
 
-		const [workspaceName,setWorkspaceName] = useState({
+		const [workspaceState,setWorkspaceState] = useState({
 			name:"",
 			description:"",
 		});
 		
 		const onTextFieldChange = (e) => {
-				setWorkspaceName({
+				setWorkspaceState({
 					name: `${e.target.value}`,
 					description:`Workspace with ${e.target.value} name.`
 				})
 		};
 		const handleCreateWorkspaceClick = () =>	{
-				createWorkspace
-				.postWorkspaces(workspaceName)
+				workspaceService
+				.postWorkspaces(workspaceState)
 				.then((sentWithSucces) => {
 					if (!sentWithSucces) {
 						return;
