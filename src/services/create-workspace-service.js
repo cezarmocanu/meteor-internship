@@ -4,7 +4,6 @@ const postWorkspaces = async (workspaceData) => {
 
     const response = await fetch(ENDPOINTS.WORKSPACE.USER_WORKSPACE, {
 		method: "POST",
-		mode:'cors',
 		body: JSON.stringify(workspaceData),
 	});
 
