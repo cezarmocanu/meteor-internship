@@ -12,6 +12,8 @@ const RoutePaths = {
 	WORKSPACES: "/workspaces",
 	SETTINGS: "/settings",
 	TASK_DETAILS: "/task-details",
+	INDIVIDUAL_WORKSPACE: "/individual-workspace",
+
 };
 
 export default RoutePaths;
