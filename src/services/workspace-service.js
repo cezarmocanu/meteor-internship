@@ -19,7 +19,7 @@ const getWorkspaces = async () => {
 };
 
 const postWorkspaces = async (workspaceData) => {
-
+	const token = localStorage.getItem("token");
     const response = await fetch(ENDPOINTS.WORKSPACE.USER_WORKSPACE, {
 		method: "POST",
 		headers: {
