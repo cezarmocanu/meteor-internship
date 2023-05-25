@@ -24,6 +24,7 @@ import DeleteTaskModalContent from "./components/modal-content/DeleteTaskModalCo
 import TaskDetailsPage from "./pages/TaskDetailsPage";
 import FadeIn from "./utils/FadeIn";
 import ProtectedRoute from "./utils/ProtectedRoute";
+import EditTask from "./components/modal-content/EditTask";
 
 function App() {
 	const dispatch = useDispatch();
@@ -146,6 +147,7 @@ function App() {
 					{modalState === ModalTypes.CREATE_TASK && <CreateTask />}
 					{modalState === ModalTypes.LOGOUT && <LogoutModal />}
 					{modalState === ModalTypes.DELETE_TASK && <DeleteTaskModalContent />}
+					{modalState === ModalTypes.EDIT_TASK && <EditTask />}
 				</Dialog>
 			</BrowserRouter>
 		</>
