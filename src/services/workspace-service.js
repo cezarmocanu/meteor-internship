@@ -22,6 +22,9 @@ const postWorkspaces = async (workspaceData) => {
 
     const response = await fetch(ENDPOINTS.WORKSPACE.USER_WORKSPACE, {
 		method: "POST",
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
 		body: JSON.stringify(workspaceData),
 	});
 
