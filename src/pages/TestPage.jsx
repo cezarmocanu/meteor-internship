@@ -55,6 +55,28 @@ function Test() {
 		});
 	}, []);
 
+		const [workspaceState,setWorkspaceState] = useState({
+			name:"",
+			description:"",
+		});
+		
+		const onTextFieldChange = (e) => {
+				setWorkspaceState({
+					name: `${e.target.value}`,
+					description:`Workspace with ${e.target.value} name.`
+				})
+		};
+		
+		const handleCreateWorkspaceClick = () =>	{
+				workspaceService
+				.postWorkspaces(workspaceState)
+				.then((sentWithSucces) => {
+					if (!sentWithSucces) {
+						return;
+					}
+				});
+			
+		}
 	return (
 		<Box style={{ backgroundColor: "whitesmoke" }}>
 			<Container>
@@ -99,7 +121,6 @@ function Test() {
 				>
 					Open modal test 2
 				</Button>
-
 				<Button
 					variant="contained"
 					onClick={() => {
@@ -117,6 +138,22 @@ function Test() {
 				>
 					CreateTask
 				</Button>
+				<Stack sx={{
+					display:"flex",
+					flexDirection:"column",
+				}}>
+					<TextField
+					name="title"
+					variant="outlined"
+					onChange={onTextFieldChange}
+					/>
+				<Button
+					variant="contained"
+					onClick={handleCreateWorkspaceClick}
+					> Create Workspace
+					</Button>
+					
+				</Stack>
 				<TestCounter />
 				<TestCounter />
 				<Typography variant="h2" gutterBottom>
