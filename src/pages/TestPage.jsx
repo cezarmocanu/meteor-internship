@@ -40,6 +40,7 @@ import { useNavigate } from "react-router-dom";
 import RoutePaths from "../constants/route-paths";
 import { logout } from "../store/slices/authentication-slice";
 import NoTasksPlaceholder from "../components/widget/NoTasksPlaceholder";
+import NoWorkspacesPlaceholder from "../components/widget/NoWorkspacesPlaceholder";
 
 function Test() {
 	const dispatch = useDispatch();
@@ -881,6 +882,13 @@ function Test() {
 				<NoTasksPlaceholder
 					onCreateTaskClick={() => {
 						console.log("Task created 2");
+					}}
+				/>
+			</Box>
+			<Box sx={{ width: "100vw", height: "100vh" }}>
+				<NoWorkspacesPlaceholder
+					onCreateWorkspacesClick={() => {
+						console.log("Workspace created ");
 					}}
 				/>
 			</Box>
