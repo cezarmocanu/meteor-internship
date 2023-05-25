@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useMemo } from "react";
 import { useTheme } from "@mui/material/styles";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -20,6 +21,8 @@ import TextField from "./../shared/input/TextField";
 import DatePicker from "./../shared/date-picker/DatePicker";
 import { closeModal } from "../../store/slices/modal-slice";
 import { useDispatch } from "react-redux";
+import { useFormik } from "formik";
+import * as yup from "yup";
 
 const OPTIONS = [
 	{ value: "Low", id: 1 },
@@ -32,34 +35,25 @@ function CreateTask() {
 	const today = useMemo(() => dayjs());
 	const tomorrow = useMemo(() => today.add(1, "day"));
 	const dispatch = useDispatch();
-	const [formState, setFormState] = useState({
+
+	const INITIAL_VALUES = {
 		taskName: "",
 		priority: "",
-		dueDate: "",
+		dueDate: new Date(),
 		description: "",
+	};
+	const onSubmit = (values) => {
+		console.log(values);
+	};
+
+	const formik = useFormik({
+		initialValues: INITIAL_VALUES,
+		validationSchema,
+		onSubmit,
 	});
 
-	const handleFieldChange = (event) => {
-		setFormState({ ...formState, [event.target.name]: event.target.value });
-	};
-	const handleChangeDueDate = (selectedDate) => {
-		setFormState({ ...formState, dueDate: selectedDate.toDate() });
-	};
-	const onSubmitAddTask = () => {
-		console.log(formState);
-	};
 	return (
-		<Stack
-			sx={{
-				[theme.breakpoints.up("lg")]: {
-					width: "35vw",
-				},
-				[theme.breakpoints.up("md")]: {
-					width: "50vw",
-				},
-				width: "65vw",
-			}}
-		>
+		<Stack>
 			<Stack sx={{ width: "100%" }}>
 				<DialogActions sx={{ paddingBottom: 0 }}>
 					<IconButton
@@ -78,9 +72,16 @@ function CreateTask() {
 							</FormLabel>
 							<TextField
 								required
+								size="small"
 								variant="outlined"
 								name="taskName"
-								onChange={handleFieldChange}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
+								value={formik.values.taskName}
+								error={
+									formik.touched.taskName && Boolean(formik.errors.taskName)
+								}
+								helperText={formik.touched.taskName && formik.errors.taskName}
 							/>
 						</Stack>
 						<Stack direction={"row"}>
@@ -92,9 +93,18 @@ function CreateTask() {
 										</FormLabel>
 										<TextField
 											select
+											size="small"
 											name="priority"
-											value={formState.priority}
-											onChange={handleFieldChange}
+											onChange={formik.handleChange}
+											onBlur={formik.handleBlur}
+											value={formik.values.priority}
+											error={
+												formik.touched.priority &&
+												Boolean(formik.errors.priority)
+											}
+											helperText={
+												formik.touched.priority && formik.errors.priority
+											}
 										>
 											{OPTIONS.map((option) => (
 												<MenuItem key={option.value} value={option.value}>
@@ -111,9 +121,18 @@ function CreateTask() {
 										</FormLabel>
 										<LocalizationProvider dateAdapter={AdapterDayjs}>
 											<DatePicker
-												defaultValue={tomorrow}
+												slotProps={{ textField: { size: "small" } }}
+												selected={tomorrow}
 												minDate={tomorrow}
-												onChange={handleChangeDueDate}
+												onBlur={formik.handleBlur}
+												// value={formik.values.dueDate}
+												error={
+													formik.touched.dueDate &&
+													Boolean(formik.errors.dueDate)
+												}
+												helperText={
+													formik.touched.dueDate && formik.errors.dueDate
+												}
 											/>
 										</LocalizationProvider>
 									</Stack>
@@ -127,11 +146,21 @@ function CreateTask() {
 							<TextField
 								required
 								variant="outlined"
+								size="small"
 								placeholder="Type your content here...."
 								name="description"
-								onChange={handleFieldChange}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
+								value={formik.values.description}
+								error={
+									formik.touched.description &&
+									Boolean(formik.errors.description)
+								}
+								helperText={
+									formik.touched.description && formik.errors.description
+								}
 								multiline
-								rows={3}
+								rows={4}
 							/>
 						</Stack>
 						<Stack justifyContent="flex-start" alignItems="flex-start">
@@ -139,7 +168,8 @@ function CreateTask() {
 								variant="contained"
 								color="primary"
 								size="large"
-								onClick={onSubmitAddTask}
+								onClick={formik.handleSubmit}
+								type="submit"
 							>
 								Create Task
 							</Button>
@@ -150,5 +180,22 @@ function CreateTask() {
 		</Stack>
 	);
 }
+
+const validationSchema = yup.object({
+	taskName: yup.string("Enter Task Name").required("Task Name is required"),
+	priority: yup
+		.string("Enter Task Priority")
+		.required("Task Priority is required"),
+	// dueDate: yup
+	// 	.string()
+	// 	.nullable()
+	// 	.test(function (value) {
+	// 		return value <= dayjs().add(1, "day");
+	// 	})
+	// 	.required("Task Priority is required"),
+	description: yup
+		.string("Enter Task Description")
+		.required("Task Descriptio is required"),
+});
 
 export default CreateTask;
