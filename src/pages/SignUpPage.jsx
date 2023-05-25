@@ -39,7 +39,7 @@ function SignUpPage() {
 				<Stack flexGrow={1} sx={{ p: 3 }}>
 					<Stack direction="row" justifyContent="end">
 						<Box>
-							<Button size="small" variant="outlined">
+							<Button href="/login" size="small" variant="outlined">
 								Log In
 							</Button>
 						</Box>
