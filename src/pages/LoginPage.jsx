@@ -2,35 +2,10 @@ import React from "react";
 import { Typography, Stack, Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import ContainedImage from "../components/ContainedImage";
-import Button from "../components/shared/button/Button";
 import LoginForm from "../components/forms/LoginForm";
-import authService from "../services/auth-service";
-import RoutePaths from "../constants/route-paths";
-import { login } from "../store/slices/authentication-slice";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 function LoginPage() {
 	const theme = useTheme();
-	const navigate = useNavigate();
-	const dispatch = useDispatch();
-
-	const handleLoginClick = () => {
-		authService
-			.login(loginData.username, loginData.password)
-			.then((loggedInWithSuccess) => {
-				if (!loggedInWithSuccess) {
-					return;
-				}
-
-				if (isChecked) {
-					localStorage.setItem(LocalStorageKeys.username, loginData.username);
-				}
-
-				dispatch(login());
-				navigate(RoutePaths.TEST);
-			});
-	};
 
 	return (
 		<Stack sx={{ width: "100%", height: "100vh" }}>
@@ -55,14 +30,6 @@ function LoginPage() {
 						</Stack>
 						<LoginForm />
 						<Stack gap={1}>
-							<Button
-								variant="contained"
-								color="primary"
-								size="large"
-								onClick={handleLoginClick}
-							>
-								Log in
-							</Button>
 							<Typography color="primary" fontWeight="bold">
 								Forgot Password?
 							</Typography>
